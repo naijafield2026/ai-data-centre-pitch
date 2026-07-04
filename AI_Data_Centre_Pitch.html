@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI GPU Data Centre — Nigeria | Investor Pitch</title>
+<style>
+  :root{
+    --navy:#111111; --navy2:#111111; --teal:#EA580C; --teal-lt:#B7B7B4;
+    --amber:#EA580C; --green:#EA580C; --red:#C0392B; --ink:#141414;
+    --grey:#5E5E5E; --lgrey:#F4F2EC; --line:#111111; --white:#fff;
+    --bar-rev:#111111; --bar-opex:#C9C6BC; --bar-profit:#EA580C;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{color:var(--navy);line-height:1.02;letter-spacing:-0.03em;font-weight:800;text-transform:uppercase}
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase}
+  section{padding:64px 0;border-bottom:3px solid var(--navy)}
+  section h2{font-size:38px;margin:12px 0 4px}
+  .lead{color:var(--grey);font-size:16px;max-width:740px;margin-top:12px;font-weight:500}
+
+  /* HERO */
+  .hero{background:#111;color:#fff;padding:88px 0 76px;border-bottom:3px solid var(--teal)}
+  .hero .eyebrow{color:var(--teal)}
+  .hero h1{color:#fff;font-size:58px;margin:16px 0 16px;max-width:900px;letter-spacing:-0.04em;line-height:0.98}
+  .hero p{color:#CFCCC4;font-size:19px;max-width:700px;font-weight:500;text-transform:none;line-height:1.4}
+  .hero .tag{display:inline-block;margin-top:26px;background:var(--teal);color:#111;font-family:var(--mono);
+    font-weight:700;font-size:12px;letter-spacing:.5px;padding:9px 15px;text-transform:uppercase;border:2px solid #111;box-shadow:5px 5px 0 rgba(255,255,255,.20)}
+
+  /* STAT CARDS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+  .stat{background:#fff;border:2px solid var(--navy);padding:20px;box-shadow:5px 5px 0 var(--navy)}
+  .stat .big{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--teal);letter-spacing:-0.02em}
+  .stat .lab{font-weight:800;font-size:13px;margin-top:8px;text-transform:uppercase;letter-spacing:.2px}
+  .stat .sub{color:var(--grey);font-size:12px;margin-top:4px}
+
+  /* PATHWAY CARDS */
+  .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+  .path{background:#fff;border:2px solid var(--navy);padding:22px;position:relative;box-shadow:5px 5px 0 var(--navy)}
+  .path .bar{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--teal)}
+  .path h3{font-size:19px;margin-bottom:3px;padding-left:6px}
+  .path .cap{font-family:var(--mono);color:var(--grey);font-size:11px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.3px;padding-left:6px}
+  .path ul{list-style:none;font-size:13px;padding-left:6px}
+  .path li{padding:5px 0 5px 18px;position:relative;color:var(--ink)}
+  .path li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--teal)}
+  .path .num{font-family:var(--mono);font-size:12.5px;color:var(--navy);font-weight:700;margin:8px 0 2px;text-transform:uppercase;padding-left:6px}
+
+  /* CALCULATOR */
+  .calc{background:#fff;border:3px solid var(--navy);overflow:hidden;margin-top:30px;box-shadow:9px 9px 0 var(--navy)}
+  .tabs{display:flex;background:#fff;border-bottom:3px solid var(--navy)}
+  .tab{flex:1;padding:16px 10px;text-align:center;cursor:pointer;font-weight:800;font-size:13px;color:var(--grey);border:none;background:none;text-transform:uppercase;letter-spacing:.5px;transition:.1s}
+  .tab+.tab{border-left:2px solid var(--navy)}
+  .tab.active{color:#111;background:var(--teal)}
+  .calc-body{display:grid;grid-template-columns:1.05fr 1fr;gap:0}
+  .controls{padding:28px;border-right:3px solid var(--navy)}
+  .out{padding:28px;background:var(--lgrey)}
+  .pathnote{font-size:12.5px;color:var(--ink);background:#fff;border:2px solid var(--navy);border-left:6px solid var(--teal);padding:11px 13px;margin-bottom:22px}
+  .ctl{margin-bottom:22px}
+  .ctl .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+  .ctl label{font-weight:700;font-size:13px;color:var(--ink);text-transform:uppercase;letter-spacing:.3px}
+  .ctl .val{font-family:var(--mono);font-weight:700;color:var(--teal);font-size:18px}
+  input[type=range]{-webkit-appearance:none;width:100%;height:8px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 50%,#fff 50%);border:2px solid var(--navy);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:20px;background:#111;border:2px solid #111;cursor:pointer;box-shadow:2px 2px 0 var(--teal)}
+  input[type=range]::-moz-range-thumb{width:18px;height:20px;background:#111;border:2px solid #111;cursor:pointer;border-radius:0}
+  .toggle{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+  .toggle button{flex:1;min-width:80px;padding:9px;border:2px solid var(--navy);background:#fff;cursor:pointer;font-size:12px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.2px;transition:.1s}
+  .toggle button.on{background:var(--navy);color:#fff}
+  .toggle button:hover{box-shadow:3px 3px 0 var(--teal)}
+
+  .headline{display:flex;gap:16px;margin-bottom:22px}
+  .hcard{flex:1;text-align:center;background:#fff;border:2px solid var(--navy);padding:16px 8px;box-shadow:4px 4px 0 var(--navy)}
+  .hcard .n{font-family:var(--mono);font-size:25px;font-weight:700;color:var(--navy);letter-spacing:-0.01em}
+  .hcard .l{font-family:var(--mono);font-size:10px;color:var(--grey);margin-top:6px;text-transform:uppercase;letter-spacing:.5px}
+  .hcard.profit .n{color:var(--green)}
+  .hcard.loss .n{color:var(--red)}
+
+  .bars{margin:8px 0 18px}
+  .barrow{margin:11px 0}
+  .barrow .t{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+  .track{height:16px;background:#fff;border:2px solid var(--navy);overflow:hidden}
+  .fill{height:100%;transition:width .2s}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  .metric{background:#fff;border:2px solid var(--navy);padding:13px}
+  .metric .l{font-family:var(--mono);font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:.5px}
+  .metric .n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--navy);margin-top:3px}
+  .warn{color:var(--red);font-size:12px;margin-top:10px;font-weight:700;min-height:16px}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;margin-top:26px;font-size:13.5px;background:#fff;border:3px solid var(--navy)}
+  th,td{padding:13px 14px;text-align:center;border-bottom:2px solid var(--navy)}
+  th{background:var(--navy);color:#fff;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  td{font-family:var(--mono);font-size:13px}
+  td:first-child,th:first-child{text-align:left;font-weight:700}
+  td:first-child{font-family:inherit}
+  tr:last-child td{border-bottom:none}
+  .pos{color:var(--green);font-weight:700}.neg{color:var(--red);font-weight:700}
+
+  .footer{padding:40px 0;color:var(--grey);font-size:12px}
+  .disc{background:#fff;border:2px solid var(--navy);border-left:6px solid var(--teal);padding:15px 17px;font-size:12px;color:var(--ink)}
+
+  /* TOP NAV */
+  .topnav{position:sticky;top:0;z-index:50;background:#111;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:13px 24px;border-bottom:3px solid var(--teal)}
+  .topnav .brand{color:#fff;font-weight:800;font-size:15px;margin-right:auto;text-transform:uppercase}
+  .topnav button{background:transparent;color:#fff;border:2px solid #fff;padding:9px 15px;font-family:var(--mono);font-size:12px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.3px;transition:.1s}
+  .topnav button:hover{box-shadow:3px 3px 0 var(--teal)}
+  .topnav button.on{background:var(--teal);color:#111;border-color:var(--teal)}
+
+  /* METER */
+  .meter{margin:6px 0 20px}
+  .meter .track{height:22px;background:#fff;border:2px solid var(--navy);overflow:hidden}
+  .meter .fill{height:100%;transition:width .2s,background .2s}
+  .meter .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink);margin-top:8px;text-transform:uppercase;letter-spacing:.2px}
+
+  @media(max-width:860px){
+    .stats{grid-template-columns:repeat(2,1fr)}.paths{grid-template-columns:1fr}
+    .calc-body{grid-template-columns:1fr}.controls{border-right:none;border-bottom:3px solid var(--navy)}
+    .hero h1{font-size:38px}.headline{flex-wrap:wrap}.calc{box-shadow:5px 5px 0 var(--navy)}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <span class="brand">AI Ventures · Nigeria</span>
+  <button id="navInfra" class="on" onclick="showPage('infra')">Infrastructure — sell compute</button>
+  <button id="navSvc" onclick="showPage('services')">Managed Services — sell outcomes</button>
+</div>
+
+<div id="page-infra">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">AI Infrastructure · Nigeria · Investor Brief</div>
+    <h1>An AI GPU Data Centre for Africa's Compute Gap</h1>
+    <p>Owning the compute layer in a supply-starved market — three ways to build it, one interactive model to size the return.</p>
+    <span class="tag">Interactive — drag the sliders to explore the economics</span>
+  </div>
+</div>
+
+<!-- MARKET -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The opportunity</div>
+    <h2>A market with almost no supply</h2>
+    <p class="lead">Africa's AI compute is brand new and demand massively outruns supply. Nigeria — Africa's largest economy, with data-localisation laws that force banks and government to keep data in-country — has almost no dedicated GPU capacity today.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">&lt;80</div><div class="lab">NVIDIA GPUs in all of Africa</div><div class="sub">installed before 2025 — a blank slate</div></div>
+      <div class="stat"><div class="big">~25%</div><div class="lab">Nigeria data-centre CAGR</div><div class="sub">~$0.3bn (2025) → ~$1bn+ (2031)</div></div>
+      <div class="stat"><div class="big">3k→12k</div><div class="lab">Cassava/NVIDIA GPU rollout</div><div class="sub">the only major player, 5 countries by ~2030</div></div>
+      <div class="stat"><div class="big">Captive</div><div class="lab">Data-localisation demand</div><div class="sub">banks & govt must compute locally</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PATHWAYS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Three ways in</div>
+    <h2>The same GPUs, three deployment paths</h2>
+    <p class="lead">Each trades upfront capital against running cost and control. Start lean and scale, or go big from day one — the calculator below models all three.</p>
+    <div class="paths">
+      <div class="path"><div class="bar" style="background:var(--teal)"></div>
+        <h3>Rent racks</h3><div class="cap">Colocation — buy GPUs, rent space</div>
+        <div class="num">Lowest capex · fastest launch</div>
+        <ul><li>Live in weeks, minimal build</li><li>You own the GPUs (portable later)</li><li>Pay rack rent forever — best for a pilot</li></ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div>
+        <h3>Build on the 15 MW grid</h3><div class="cap">Existing power, no plant to build</div>
+        <div class="num">Mid capex · no land/power plant</div>
+        <ul><li>~65% of capital goes to GPUs</li><li>Grid caps the site at ~8,900 GPUs</li><li>Pay a grid tariff instead of building generation</li></ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--green)"></div>
+        <h3>Build own facility</h3><div class="cap">Self-powered (flared gas + solar)</div>
+        <div class="num">Highest capex · cheapest power</div>
+        <ul><li>Full control, no grid ceiling</li><li>Near-free flared-gas fuel = low opex</li><li>Best long-term economics at scale</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Interactive model</div>
+    <h2>Size the return</h2>
+    <p class="lead">Pick a pathway, choose GPU type, then drag the sliders. Everything recalculates live. Figures are illustrative planning estimates.</p>
+    <div class="calc">
+      <div class="tabs">
+        <button class="tab" data-path="colo">Rent racks</button>
+        <button class="tab active" data-path="grid">Build on 15 MW grid</button>
+        <button class="tab" data-path="own">Build own facility</button>
+      </div>
+      <div class="calc-body">
+        <div class="controls">
+          <div class="pathnote" id="pathnote"></div>
+
+          <div class="ctl">
+            <label>GPU type</label>
+            <div class="toggle" id="gpuToggle">
+              <button data-gpu="training" class="on">Training (H200-class)</button>
+              <button data-gpu="inference">Inference (L40S-class)</button>
+            </div>
+          </div>
+
+          <div class="ctl">
+            <div class="row"><label>Number of GPUs</label><span class="val" id="vGpu">4,800</span></div>
+            <input type="range" id="sGpu" min="50" max="8900" step="50" value="4800">
+          </div>
+
+          <div class="ctl">
+            <div class="row"><label>Rental rate ($ / GPU-hour)</label><span class="val" id="vRate">$3.00</span></div>
+            <input type="range" id="sRate" min="0.5" max="6" step="0.1" value="3.0">
+          </div>
+
+          <div class="ctl">
+            <div class="row"><label>Utilisation</label><span class="val" id="vUtil">70%</span></div>
+            <input type="range" id="sUtil" min="30" max="95" step="1" value="70">
+          </div>
+          <div class="warn" id="warn"></div>
+        </div>
+
+        <div class="out">
+          <div class="headline">
+            <div class="hcard"><div class="n" id="oCapex">—</div><div class="l">Capital needed</div></div>
+            <div class="hcard profit" id="oEbitdaCard"><div class="n" id="oEbitda">—</div><div class="l">Annual profit (EBITDA)</div></div>
+            <div class="hcard"><div class="n" id="oPay">—</div><div class="l">Payback</div></div>
+          </div>
+          <div class="bars">
+            <div class="barrow"><div class="t"><span>Revenue / yr</span><span id="oRev">—</span></div><div class="track"><div class="fill" id="bRev" style="background:var(--bar-rev)"></div></div></div>
+            <div class="barrow"><div class="t"><span>Operating cost / yr</span><span id="oOpex">—</span></div><div class="track"><div class="fill" id="bOpex" style="background:var(--bar-opex)"></div></div></div>
+            <div class="barrow"><div class="t"><span>Profit / yr</span><span id="oProfit">—</span></div><div class="track"><div class="fill" id="bProfit" style="background:var(--bar-profit)"></div></div></div>
+          </div>
+          <div class="metrics">
+            <div class="metric"><div class="l">EBITDA margin</div><div class="n" id="oMargin">—</div></div>
+            <div class="metric"><div class="l">Facility power</div><div class="n" id="oPower">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE -->
+    <h3 style="margin-top:34px;font-size:20px">Same fleet, three ways — side by side</h3>
+    <p class="lead" style="margin-bottom:6px">At your current GPU count, rate and utilisation.</p>
+    <table id="cmp">
+      <thead><tr><th>Pathway</th><th>Capital</th><th>Profit / yr</th><th>Margin</th><th>Payback</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Competitive position</div>
+    <h2>Ahead of the field, fast</h2>
+    <p class="lead">Africa's incumbents rent space and power, not GPUs. At scale this becomes the continent's leading independent AI compute provider.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">~1,600</div><div class="lab">GPUs at $100M</div><div class="sub">already among Africa's largest clusters</div></div>
+      <div class="stat"><div class="big">~4,800</div><div class="lab">GPUs at $300M</div><div class="sub">more than Cassava's entire current fleet</div></div>
+      <div class="stat"><div class="big">~8,100</div><div class="lab">GPUs at $500M</div><div class="sub">likely the largest single cluster in Africa</div></div>
+      <div class="stat"><div class="big">Anchor</div><div class="lab">Route to revenue</div><div class="sub">sign 3–5 bank/telco/govt clients first</div></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-infra -->
+
+<div id="page-services" style="display:none">
+
+  <!-- SERVICES HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Managed AI Services · Nigeria · Investor Brief</div>
+      <h1>Sell AI Outcomes, Not Rented Chips</h1>
+      <p>We run the software on cost-optimised hardware; clients pay a fixed fee for a finished AI product — never a token bill.</p>
+      <span class="tag">Interactive — model the client economics below</span>
+    </div>
+  </div>
+
+  <!-- MODEL -->
+  <section><div class="wrap">
+    <div class="eyebrow">The model</div>
+    <h2>A different business on the same hardware</h2>
+    <p class="lead">Because we own the software stack, we run cheaper AMD/NPU chips the customer never sees — and bill in fixed, predictable fees instead of usage tokens. Higher margins, stickier contracts, data kept in-country.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">2–3×</div><div class="lab">cheaper hardware</div><div class="sub">AMD MI300 vs NVIDIA</div></div>
+      <div class="stat"><div class="big">No tokens</div><div class="lab">fixed-fee pricing</div><div class="sub">subscription / per-transaction</div></div>
+      <div class="stat"><div class="big">~7</div><div class="lab">clients to break even</div><div class="sub">then near-pure margin</div></div>
+      <div class="stat"><div class="big">Local</div><div class="lab">data stays in Nigeria</div><div class="sub">localisation = built-in moat</div></div>
+    </div>
+  </div></section>
+
+  <!-- DELIVERY -->
+  <section><div class="wrap">
+    <div class="eyebrow">What we sell & how we charge</div>
+    <h2>Products, not infrastructure</h2>
+    <p class="lead">The customer gets an outcome and a predictable bill. No API tokens, no CUDA, no hardware to manage.</p>
+    <div class="paths">
+      <div class="path"><div class="bar" style="background:var(--teal)"></div><h3>Managed app</h3><div class="cap">Fraud, KYC, assistants</div><ul><li>Client logs into a tool</li><li>Priced per seat or subscription</li></ul></div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div><h3>Batch service</h3><div class="cap">Send data, get results</div><ul><li>No live endpoint needed</li><li>Priced per document / transaction</li></ul></div>
+      <div class="path"><div class="bar" style="background:var(--green)"></div><h3>Private appliance</h3><div class="cap">A box in their data centre</div><ul><li>Meets data-residency rules</li><li>Fixed fee + support</li></ul></div>
+    </div>
+  </div></section>
+
+  <!-- PRICING DETAIL -->
+  <section><div class="wrap">
+    <div class="eyebrow">Pricing & unit economics</div>
+    <h2>What we charge — and why it's high-margin</h2>
+    <p class="lead">Benchmarked against what Nigerian enterprises already pay incumbents like Smile ID, Prembly and global fraud vendors. We price at or just below them — on cheaper hardware — so we win on price and keep the margin.</p>
+    <table>
+      <thead><tr><th>Product</th><th>Pricing model</th><th>Market benchmark</th><th>Our target</th></tr></thead>
+      <tbody>
+        <tr><td>Fraud &amp; risk scoring</td><td>Annual subscription</td><td>$200k–500k global enterprise</td><td>$80k–200k / bank / yr</td></tr>
+        <tr><td>KYC / identity checks</td><td>Per check</td><td>$0.10–1.00 (Smile ID, Prembly)</td><td>$0.15–0.50 / check</td></tr>
+        <tr><td>Document AI</td><td>Per doc / subscription</td><td>varies widely</td><td>$0.05–0.30 / doc</td></tr>
+        <tr><td>AI assistant / copilot</td><td>Per seat / month</td><td>$20–100 / seat</td><td>$20–60 / seat / mo</td></tr>
+      </tbody>
+    </table>
+    <div class="stats" style="margin-top:24px">
+      <div class="stat"><div class="big">₦52bn</div><div class="lab">lost to fraud in 2024</div><div class="sub">Nigerian banks — the budget that funds a fraud product</div></div>
+      <div class="stat"><div class="big">85–90%</div><div class="lab">gross margin / client</div><div class="sub">compute per inference is cents; the team is the fixed cost</div></div>
+      <div class="stat"><div class="big">2–3×</div><div class="lab">cheaper to run</div><div class="sub">AMD + open models vs NVIDIA + frontier APIs</div></div>
+      <div class="stat"><div class="big">Custom</div><div class="lab">enterprise contracts</div><div class="sub">no published prices — room to localise & negotiate</div></div>
+    </div>
+    <div class="disc" style="margin-top:22px"><strong>Worked example — one mid-tier bank.</strong> A fraud-scoring subscription at ~$120k/yr. Compute to score its transactions on our AMD platform costs a few hundred dollars a month; support and model upkeep a few thousand. Contribution after direct cost is ~$100k/yr — so roughly <strong>7 such clients cover the entire engineering team</strong>, and every client after that is nearly pure profit. This is why the model breaks even fast and then scales at 85%+ incremental margin.</div>
+  </div></section>
+
+  <!-- SERVICES CALCULATOR -->
+  <section><div class="wrap">
+    <div class="eyebrow">Interactive model</div>
+    <h2>Size the services business</h2>
+    <p class="lead">Drag the sliders — client economics recalculate live. Illustrative planning estimates.</p>
+    <div class="calc">
+      <div class="tabs" id="svcTabs">
+        <button class="tab active" data-mode="subs">Enterprise subscriptions</button>
+        <button class="tab" data-mode="kyc">Per-transaction (KYC)</button>
+      </div>
+      <div class="calc-body">
+        <div class="controls">
+          <div class="ctl">
+            <label>Hardware</label>
+            <div class="toggle" id="svcHw">
+              <button data-hw="amd" class="on">AMD MI300</button>
+              <button data-hw="npu">NPU (Ascend)</button>
+              <button data-hw="nvidia">NVIDIA</button>
+            </div>
+          </div>
+          <div class="ctl"><div class="row"><label>Accelerators (chips)</label><span class="val" id="vChips">32</span></div><input type="range" id="sChips" min="8" max="256" step="8" value="32"></div>
+          <div class="ctl mode-subs"><div class="row"><label>Enterprise clients</label><span class="val" id="vClients">12</span></div><input type="range" id="sClients" min="1" max="40" step="1" value="12"></div>
+          <div class="ctl mode-subs"><div class="row"><label>Avg contract value ($ / yr)</label><span class="val" id="vContract">$120k</span></div><input type="range" id="sContract" min="40000" max="300000" step="5000" value="120000"></div>
+          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>Total checks / month</label><span class="val" id="vVol">1.0M</span></div><input type="range" id="sVol" min="50000" max="50000000" step="50000" value="1000000"></div>
+          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>Price per check</label><span class="val" id="vPrice">$0.30</span></div><input type="range" id="sPrice" min="0.10" max="0.60" step="0.01" value="0.30"></div>
+          <div class="warn" id="svcWarn"></div>
+        </div>
+        <div class="out">
+          <div class="headline">
+            <div class="hcard"><div class="n" id="svcCapex">—</div><div class="l">Platform capital</div></div>
+            <div class="hcard profit" id="svcEbitdaCard"><div class="n" id="svcEbitda">—</div><div class="l">Annual profit (EBITDA)</div></div>
+            <div class="hcard"><div class="n" id="svcPay">—</div><div class="l">Payback</div></div>
+          </div>
+          <div class="meter">
+            <div class="track"><div class="fill" id="svcMeter" style="background:var(--green)"></div></div>
+            <div class="lbl"><span id="svcBeText">—</span><span id="svcMargin">—</span></div>
+          </div>
+          <div class="bars">
+            <div class="barrow"><div class="t"><span>Revenue / yr</span><span id="svcRev">—</span></div><div class="track"><div class="fill" id="svcbRev" style="background:var(--bar-rev)"></div></div></div>
+            <div class="barrow"><div class="t"><span>Operating cost / yr</span><span id="svcOpex">—</span></div><div class="track"><div class="fill" id="svcbOpex" style="background:var(--bar-opex)"></div></div></div>
+            <div class="barrow"><div class="t"><span>Profit / yr</span><span id="svcProfit">—</span></div><div class="track"><div class="fill" id="svcbProfit" style="background:var(--bar-profit)"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="disc" style="margin-top:22px"><strong>Same chips, two models.</strong> This managed-services business can run on the very same hardware as the infrastructure plan — rent the compute out, or sell finished outcomes on it. Switch to the <strong>Infrastructure</strong> page to compare the compute-rental economics.</div>
+  </div></section>
+
+</div><!-- /page-services -->
+
+<div class="footer">
+  <div class="wrap">
+    <div class="disc"><strong>Disclaimer.</strong> All figures are illustrative, planning-grade estimates built from public 2026 market data (GPU pricing, cloud rental rates, Nigerian cost benchmarks, FX ₦1,400/$). They are intended to explore sensitivities, not to serve as audited projections. Confirm with vendor quotes and a detailed engineering and financial study before any investment decision. Confidential.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var HOURS=8760, PUE=1.3;
+  var GPU={
+    training:{compute:40000, kw:1.3},
+    inference:{compute:14000, kw:0.7}
+  };
+  var PATH={
+    colo:{label:'Rent racks (colocation)', overhead:3000, tariff:0.20, ops:4500, cap:400, defN:30,
+      note:'Buy GPUs, rent rack space. Lowest capital and fastest to launch, but you pay rack rent (built into operating cost here) for as long as you run. Best as a pilot to prove demand.'},
+    grid:{label:'Build on the 15 MW grid', overhead:22000, tariff:0.12, ops:4000, cap:8900, defN:4800,
+      note:'An existing 15 MW grid runs 24/7 — no land or power plant to build, so ~65% of capital goes to GPUs. The 15 MW caps the site at ~8,900 GPUs.'},
+    own:{label:'Build own facility', overhead:40000, tariff:0.045, ops:4000, cap:12000, defN:1800,
+      note:'Build the site and self-generate (flared gas + solar). Highest upfront capital, but near-free fuel gives the lowest running cost and no grid ceiling.'}
+  };
+
+  var state={path:'grid', gpu:'training', N:4800, rate:3.0, util:0.70};
+
+  function fmtUSD(v){
+    var a=Math.abs(v);
+    if(a>=1e9) return (v/1e9).toFixed(2).replace(/\.00$/,'')+'bn';
+    if(a>=1e6) return '$'+(v/1e6).toFixed(1)+'M';
+    if(a>=1e3) return '$'+Math.round(v/1e3)+'k';
+    return '$'+Math.round(v);
+  }
+  function fmtBn(v){ return (v>=1e9)?('$'+(v/1e9).toFixed(2)+'bn'):fmtUSD(v); }
+
+  function calc(pathKey,gpuKey,N,rate,util){
+    var g=GPU[gpuKey], p=PATH[pathKey];
+    var capexPerGpu=g.compute+p.overhead;
+    var capex=N*capexPerGpu;
+    var kwIT=N*g.kw;
+    var facilityMW=kwIT*PUE/1000;
+    var powerPerGpu=g.kw*PUE*HOURS*p.tariff;
+    var opex=N*(powerPerGpu+p.ops);
+    var revenue=N*rate*HOURS*util;
+    var ebitda=revenue-opex;
+    var margin=revenue>0?ebitda/revenue:0;
+    var payback=ebitda>0?capex/ebitda:Infinity;
+    return {capex:capex,opex:opex,revenue:revenue,ebitda:ebitda,margin:margin,payback:payback,facilityMW:facilityMW};
+  }
+
+  function render(){
+    var p=PATH[state.path];
+    document.getElementById('pathnote').textContent=p.note;
+
+    // slider bounds per pathway
+    var sGpu=document.getElementById('sGpu');
+    sGpu.max=p.cap;
+    if(state.N>p.cap){ state.N=p.cap; sGpu.value=p.cap; }
+
+    var r=calc(state.path,state.gpu,state.N,state.rate,state.util);
+
+    document.getElementById('vGpu').textContent=state.N.toLocaleString();
+    document.getElementById('vRate').textContent='$'+state.rate.toFixed(2);
+    document.getElementById('vUtil').textContent=Math.round(state.util*100)+'%';
+
+    document.getElementById('oCapex').textContent=fmtBn(r.capex);
+    document.getElementById('oRev').textContent=fmtUSD(r.revenue)+'/yr';
+    document.getElementById('oOpex').textContent=fmtUSD(r.opex)+'/yr';
+    document.getElementById('oProfit').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda))+'/yr';
+    document.getElementById('oEbitda').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda));
+    document.getElementById('oMargin').textContent=(r.margin*100).toFixed(0)+'%';
+    document.getElementById('oPower').textContent=r.facilityMW.toFixed(1)+' MW';
+    document.getElementById('oPay').textContent=(r.payback===Infinity||r.payback>40)?'—':r.payback.toFixed(1)+' yrs';
+
+    var card=document.getElementById('oEbitdaCard');
+    card.className='hcard '+(r.ebitda>=0?'profit':'loss');
+
+    // bars scaled to revenue
+    var base=Math.max(r.revenue, r.opex, 1);
+    document.getElementById('bRev').style.width='100%';
+    document.getElementById('bOpex').style.width=Math.min(100,r.opex/base*100)+'%';
+    document.getElementById('bProfit').style.width=Math.max(0,Math.min(100,r.ebitda/base*100))+'%';
+    document.getElementById('bProfit').style.background=r.ebitda>=0?'var(--bar-profit)':'var(--red)';
+
+    // grid slider fill
+    document.querySelectorAll('input[type=range]').forEach(function(s){
+      var pct=(s.value-s.min)/(s.max-s.min)*100;
+      s.style.background='linear-gradient(90deg,var(--teal) '+pct+'%,#fff '+pct+'%)';
+    });
+
+    // warning
+    var w=document.getElementById('warn');
+    if(state.path==='grid' && state.N>=8900){ w.textContent='At the 15 MW grid ceiling (~8,900 GPUs). Growing further needs more power.'; }
+    else if(r.ebitda<0){ w.textContent='Loss at this rate & utilisation — the fixed costs outweigh revenue.'; }
+    else w.textContent='';
+
+    // comparison table (same N, rate, util across all three)
+    var tb=document.querySelector('#cmp tbody'); tb.innerHTML='';
+    ['colo','grid','own'].forEach(function(k){
+      var c=calc(k,state.gpu,Math.min(state.N,PATH[k].cap),state.rate,state.util);
+      var pay=(c.payback===Infinity||c.payback>40)?'—':c.payback.toFixed(1)+' yrs';
+      var prof=(c.ebitda>=0?'<span class="pos">':'<span class="neg">–')+fmtUSD(Math.abs(c.ebitda))+'</span>';
+      var capN=Math.min(state.N,PATH[k].cap);
+      var nlabel=(capN<state.N)?(' <span style="color:var(--grey);font-weight:400">('+capN.toLocaleString()+' max)</span>'):'';
+      tb.insertAdjacentHTML('beforeend',
+        '<tr><td>'+PATH[k].label+nlabel+'</td><td>'+fmtBn(c.capex)+'</td><td>'+prof+'</td><td>'+(c.margin*100).toFixed(0)+'%</td><td>'+pay+'</td></tr>');
+    });
+  }
+
+  // events
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+      t.classList.add('active');
+      state.path=t.dataset.path;
+      state.N=PATH[state.path].defN;
+      document.getElementById('sGpu').value=state.N;
+      render();
+    });
+  });
+  document.querySelectorAll('#gpuToggle button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#gpuToggle button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); state.gpu=b.dataset.gpu; render();
+    });
+  });
+  document.getElementById('sGpu').addEventListener('input',function(){state.N=parseInt(this.value);render();});
+  document.getElementById('sRate').addEventListener('input',function(){state.rate=parseFloat(this.value);render();});
+  document.getElementById('sUtil').addEventListener('input',function(){state.util=parseInt(this.value)/100;render();});
+
+  render();
+})();
+</script>
+<script>
+function showPage(p){
+  document.getElementById('page-infra').style.display   = (p==='infra')   ? '' : 'none';
+  document.getElementById('page-services').style.display = (p==='services')? '' : 'none';
+  document.getElementById('navInfra').classList.toggle('on', p==='infra');
+  document.getElementById('navSvc').classList.toggle('on', p==='services');
+  window.scrollTo(0,0);
+}
+(function(){
+  var HW={
+    amd:   {chip:15000, cap:2.0e6, cpc:0.020, varClient:18000},
+    npu:   {chip:10000, cap:1.2e6, cpc:0.020, varClient:20000},
+    nvidia:{chip:40000, cap:3.0e6, cpc:0.040, varClient:26000}
+  };
+  var hw='amd', mode='subs';
+  var st={chips:32, clients:12, contract:120000, vol:1000000, price:0.30};
+  function fmtUSD(v){var a=Math.abs(v);if(a>=1e9)return '$'+(v/1e9).toFixed(2)+'bn';if(a>=1e6)return '$'+(v/1e6).toFixed(2)+'M';if(a>=1e3)return '$'+Math.round(v/1e3)+'k';return '$'+Math.round(v);}
+  function fmtN(v){if(v>=1e6)return (v/1e6).toFixed(v>=1e7?0:1)+'M';if(v>=1e3)return Math.round(v/1e3)+'k';return ''+v;}
+  function calc(){
+    var h=HW[hw];
+    var capex=st.chips*h.chip;
+    var fixed=500000 + 6000*st.chips;   // team + facility, scales with platform
+    var rev, opex, be=null, capUsed=null;
+    if(mode==='subs'){
+      rev=st.clients*st.contract;
+      opex=fixed + st.clients*h.varClient;
+      be=(st.contract-h.varClient>0) ? Math.ceil(fixed/(st.contract-h.varClient)) : Infinity;
+    } else {
+      var annualVol=st.vol*12;
+      rev=annualVol*st.price;
+      opex=fixed + annualVol*h.cpc;
+      capUsed=st.vol/(st.chips*h.cap);
+    }
+    var ebitda=rev-opex;
+    var margin=rev>0 ? ebitda/rev : 0;
+    var pay=ebitda>0 ? capex/ebitda : Infinity;
+    return {capex:capex,rev:rev,opex:opex,ebitda:ebitda,margin:margin,be:be,pay:pay,capUsed:capUsed};
+  }
+  function render(){
+    document.getElementById('vChips').textContent=st.chips;
+    document.getElementById('vClients').textContent=st.clients;
+    document.getElementById('vContract').textContent='$'+Math.round(st.contract/1000)+'k';
+    document.getElementById('vVol').textContent=fmtN(st.vol);
+    document.getElementById('vPrice').textContent='$'+st.price.toFixed(2);
+    var r=calc();
+    document.getElementById('svcCapex').textContent=fmtUSD(r.capex);
+    document.getElementById('svcEbitda').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda));
+    document.getElementById('svcEbitdaCard').className='hcard '+(r.ebitda>=0?'profit':'loss');
+    document.getElementById('svcPay').textContent=(r.pay===Infinity||r.pay>40)?'—':(r.pay<1?(r.pay*12).toFixed(1)+' mo':r.pay.toFixed(1)+' yrs');
+    document.getElementById('svcRev').textContent=fmtUSD(r.rev)+'/yr';
+    document.getElementById('svcOpex').textContent=fmtUSD(r.opex)+'/yr';
+    document.getElementById('svcProfit').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda))+'/yr';
+    document.getElementById('svcMargin').textContent='Margin '+(r.margin*100).toFixed(0)+'%';
+    var base=Math.max(r.rev,r.opex,1);
+    document.getElementById('svcbRev').style.width='100%';
+    document.getElementById('svcbOpex').style.width=Math.min(100,r.opex/base*100)+'%';
+    var pf=document.getElementById('svcbProfit');
+    pf.style.width=Math.max(0,Math.min(100,r.ebitda/base*100))+'%';
+    pf.style.background=r.ebitda>=0?'var(--bar-profit)':'var(--red)';
+    var warn=document.getElementById('svcWarn'); warn.textContent='';
+    var m=document.getElementById('svcMeter');
+    if(mode==='subs'){
+      var beN=r.be;
+      var pct=(beN===Infinity)?0:Math.min(100, st.clients/Math.max(beN,1)*100);
+      m.style.width=pct+'%';
+      m.style.background=(st.clients>=beN)?'var(--bar-profit)':'var(--bar-opex)';
+      document.getElementById('svcBeText').textContent=(beN===Infinity)?'Contract below cost — raise price':(st.clients+' of ~'+beN+' clients to break even'+(st.clients>=beN?'  ✓ profitable':''));
+      if(r.ebitda<0) warn.textContent='Below break-even — sign more clients or raise contract value.';
+    } else {
+      var cu=r.capUsed;
+      m.style.width=Math.min(100,cu*100)+'%';
+      m.style.background=cu>1?'var(--red)':(cu>0.9?'var(--bar-opex)':'var(--bar-profit)');
+      document.getElementById('svcBeText').textContent=(cu*100).toFixed(cu<0.1?1:0)+'% of chip capacity used';
+      if(cu>1) warn.textContent='Volume exceeds capacity — add accelerators to serve it.';
+    }
+    ['sChips','sClients','sContract','sVol','sPrice'].forEach(function(id){var s=document.getElementById(id);if(!s)return;var p=(s.value-s.min)/(s.max-s.min)*100;s.style.background='linear-gradient(90deg,var(--teal) '+p+'%,#fff '+p+'%)';});
+  }
+  function setMode(mm){
+    mode=mm;
+    document.querySelectorAll('#svcTabs .tab').forEach(function(t){t.classList.toggle('active', t.dataset.mode===mm);});
+    document.querySelectorAll('.mode-subs').forEach(function(e){e.style.display=(mm==='subs')?'':'none';});
+    document.querySelectorAll('.mode-kyc').forEach(function(e){e.style.display=(mm==='kyc')?'':'none';});
+    render();
+  }
+  document.getElementById('sChips').addEventListener('input',function(){st.chips=parseInt(this.value);render();});
+  document.getElementById('sClients').addEventListener('input',function(){st.clients=parseInt(this.value);render();});
+  document.getElementById('sContract').addEventListener('input',function(){st.contract=parseInt(this.value);render();});
+  document.getElementById('sVol').addEventListener('input',function(){st.vol=parseInt(this.value);render();});
+  document.getElementById('sPrice').addEventListener('input',function(){st.price=parseFloat(this.value);render();});
+  document.querySelectorAll('#svcHw button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#svcHw button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');hw=b.dataset.hw;render();});});
+  document.querySelectorAll('#svcTabs .tab').forEach(function(t){t.addEventListener('click',function(){setMode(t.dataset.mode);});});
+  setMode('subs');
+})();
+</script>
+</body>
+</html>

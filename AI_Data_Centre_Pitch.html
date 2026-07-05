@@ -10,6 +10,7 @@
     --amber:#EA580C; --green:#EA580C; --red:#C0392B; --ink:#141414;
     --grey:#5E5E5E; --lgrey:#F4F2EC; --line:#111111; --white:#fff;
     --bar-rev:#111111; --bar-opex:#C9C6BC; --bar-profit:#EA580C;
+    --warnamber:#B45309;
     --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -62,6 +63,7 @@
   .ctl .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
   .ctl label{font-weight:700;font-size:13px;color:var(--ink);text-transform:uppercase;letter-spacing:.3px}
   .ctl .val{font-family:var(--mono);font-weight:700;color:var(--teal);font-size:18px}
+  .rnote{font-family:var(--mono);font-size:10.5px;color:var(--grey);margin-top:7px;letter-spacing:.2px}
   input[type=range]{-webkit-appearance:none;width:100%;height:8px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 50%,#fff 50%);border:2px solid var(--navy);outline:none}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:20px;background:#111;border:2px solid #111;cursor:pointer;box-shadow:2px 2px 0 var(--teal)}
   input[type=range]::-moz-range-thumb{width:18px;height:20px;background:#111;border:2px solid #111;cursor:pointer;border-radius:0}
@@ -87,6 +89,8 @@
   .metric .l{font-family:var(--mono);font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:.5px}
   .metric .n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--navy);margin-top:3px}
   .warn{color:var(--red);font-size:12px;margin-top:10px;font-weight:700;min-height:16px}
+  .flag{color:var(--warnamber);font-size:12px;margin-top:6px;font-weight:700}
+  .fineprint{font-size:11.5px;color:var(--grey);margin-top:14px;line-height:1.5}
 
   /* TABLE */
   table{width:100%;border-collapse:collapse;margin-top:26px;font-size:13.5px;background:#fff;border:3px solid var(--navy)}
@@ -97,6 +101,13 @@
   td:first-child{font-family:inherit}
   tr:last-child td{border-bottom:none}
   .pos{color:var(--green);font-weight:700}.neg{color:var(--red);font-weight:700}
+
+  /* ASSUMPTIONS */
+  .assume table{font-size:12.5px}
+  .assume td{font-size:12px;text-align:left;font-family:var(--mono)}
+  .assume th{text-align:left}
+  .assume td:first-child{font-family:inherit;font-weight:700}
+  .assume a{color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)}
 
   .footer{padding:40px 0;color:var(--grey);font-size:12px}
   .disc{background:#fff;border:2px solid var(--navy);border-left:6px solid var(--teal);padding:15px 17px;font-size:12px;color:var(--ink)}
@@ -134,9 +145,9 @@
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <div class="eyebrow">AI Infrastructure · Nigeria · Investor Brief</div>
+    <div class="eyebrow">AI Infrastructure · Nigeria · Investor Brief · July 2026</div>
     <h1>An AI GPU Data Centre for Africa's Compute Gap</h1>
-    <p>Owning the compute layer in a supply-starved market — three ways to build it, one interactive model to size the return.</p>
+    <p>Owning the compute layer in a market where at-scale supply is only now arriving — three ways to build it, one interactive model to size the return. Market assumptions are sourced and listed at the end.</p>
     <span class="tag">Interactive — drag the sliders to explore the economics</span>
   </div>
 </div>
@@ -146,12 +157,12 @@
   <div class="wrap">
     <div class="eyebrow">The opportunity</div>
     <h2>A market with almost no supply</h2>
-    <p class="lead">Africa's AI compute is brand new and demand massively outruns supply. Nigeria — Africa's largest economy, with data-localisation laws that force banks and government to keep data in-country — has almost no dedicated GPU capacity today.</p>
+    <p class="lead">Africa hosts ~0.6% of global data-centre capacity for ~19% of the world's population. Nigeria — Africa's largest economy — hosts ~90% of its data abroad and leaks roughly $1bn a year in cloud spend offshore. From 1 January 2027 the Central Bank requires all payment-transaction data stored in-country. Local AI compute is scarce, and the first at-scale GPU clusters are only now arriving.</p>
     <div class="stats">
-      <div class="stat"><div class="big">&lt;80</div><div class="lab">NVIDIA GPUs in all of Africa</div><div class="sub">installed before 2025 — a blank slate</div></div>
-      <div class="stat"><div class="big">~25%</div><div class="lab">Nigeria data-centre CAGR</div><div class="sub">~$0.3bn (2025) → ~$1bn+ (2031)</div></div>
-      <div class="stat"><div class="big">3k→12k</div><div class="lab">Cassava/NVIDIA GPU rollout</div><div class="sub">the only major player, 5 countries by ~2030</div></div>
-      <div class="stat"><div class="big">Captive</div><div class="lab">Data-localisation demand</div><div class="sub">banks & govt must compute locally</div></div>
+      <div class="stat"><div class="big">0.6%</div><div class="lab">Africa's share of global DC capacity</div><div class="sub">for ~19% of world population — ADCA / WEF</div></div>
+      <div class="stat"><div class="big">~16%</div><div class="lab">Nigeria data-centre CAGR</div><div class="sub">$322M (2025) → ~$783M (2031) — Mordor Intelligence</div></div>
+      <div class="stat"><div class="big">1%</div><div class="lab">of African data scientists have on-prem GPUs</div><div class="sub">Zindi survey of 11,000 — UNDP, 2025</div></div>
+      <div class="stat"><div class="big">Jan 2027</div><div class="lab">CBN localisation deadline</div><div class="sub">payment-transaction data must be stored &amp; managed in Nigeria</div></div>
     </div>
   </div>
 </section>
@@ -161,22 +172,22 @@
   <div class="wrap">
     <div class="eyebrow">Three ways in</div>
     <h2>The same GPUs, three deployment paths</h2>
-    <p class="lead">Each trades upfront capital against running cost and control. Start lean and scale, or go big from day one — the calculator below models all three.</p>
+    <p class="lead">Each trades upfront capital against running cost and control. Start lean and scale, or go big from day one — the calculator below models all three with mid-2026 market numbers.</p>
     <div class="paths">
       <div class="path"><div class="bar" style="background:var(--teal)"></div>
         <h3>Rent racks</h3><div class="cap">Colocation — buy GPUs, rent space</div>
         <div class="num">Lowest capex · fastest launch</div>
-        <ul><li>Live in weeks, minimal build</li><li>You own the GPUs (portable later)</li><li>Pay rack rent forever — best for a pilot</li></ul>
+        <ul><li>Live in months, minimal build</li><li>You own the GPUs (portable later)</li><li>GPU-ready racks are scarce in Lagos — pilot scale, thinnest margin</li></ul>
       </div>
       <div class="path"><div class="bar" style="background:var(--amber)"></div>
-        <h3>Build on the 15 MW grid</h3><div class="cap">Existing power, no plant to build</div>
-        <div class="num">Mid capex · no land/power plant</div>
-        <ul><li>~65% of capital goes to GPUs</li><li>Grid caps the site at ~8,900 GPUs</li><li>Pay a grid tariff instead of building generation</li></ul>
+        <h3>Build on the 15 MW grid</h3><div class="cap">Existing power connection, no plant to build</div>
+        <div class="num">Mid capex · fastest path to scale · 18–30 mo build</div>
+        <ul><li>~3/4 of capital goes to GPUs</li><li>15 MW supports ~8,000 training GPUs at peak load</li><li>Dedicated grid supply + full N+1 gas backup — ~$0.155/kWh blended</li></ul>
       </div>
       <div class="path"><div class="bar" style="background:var(--green)"></div>
-        <h3>Build own facility</h3><div class="cap">Self-powered (flared gas + solar)</div>
-        <div class="num">Highest capex · cheapest power</div>
-        <ul><li>Full control, no grid ceiling</li><li>Near-free flared-gas fuel = low opex</li><li>Best long-term economics at scale</li></ul>
+        <h3>Build own facility</h3><div class="cap">Self-powered (captive gas generation)</div>
+        <div class="num">Highest capex · cheapest power at scale</div>
+        <ul><li>Full control — modelled first phase 20 MW</li><li>Captive gas ~$0.09–0.10/kWh (flared-gas deals are upside)</li><li>24–30 months from ground-break, +6–12 for land &amp; permits</li></ul>
       </div>
     </div>
   </div>
@@ -185,9 +196,9 @@
 <!-- CALCULATOR -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">Interactive model</div>
+    <div class="eyebrow">Interactive model · market data as of July 2026</div>
     <h2>Size the return</h2>
-    <p class="lead">Pick a pathway, choose GPU type, then drag the sliders. Everything recalculates live. Figures are illustrative planning estimates.</p>
+    <p class="lead">Pick a pathway, choose GPU type, then drag the sliders. Slider ranges are constrained to the real 2026 market; settings that go beyond market medians are flagged in amber so you always know when you are looking at an upside case.</p>
     <div class="calc">
       <div class="tabs">
         <button class="tab" data-path="colo">Rent racks</button>
@@ -207,37 +218,45 @@
           </div>
 
           <div class="ctl">
-            <div class="row"><label>Number of GPUs</label><span class="val" id="vGpu">4,800</span></div>
-            <input type="range" id="sGpu" min="50" max="8900" step="50" value="4800">
+            <div class="row"><label>Number of GPUs</label><span class="val" id="vGpu">4,000</span></div>
+            <input type="range" id="sGpu" min="50" max="8050" step="50" value="4000">
           </div>
 
           <div class="ctl">
-            <div class="row"><label>Rental rate ($ / GPU-hour)</label><span class="val" id="vRate">$3.00</span></div>
-            <input type="range" id="sRate" min="0.5" max="6" step="0.1" value="3.0">
+            <div class="row"><label>Rental rate ($ / GPU-hour)</label><span class="val" id="vRate">$3.20</span></div>
+            <input type="range" id="sRate" min="2.0" max="4.5" step="0.1" value="3.2">
+            <div class="rnote" id="rateNote"></div>
           </div>
 
           <div class="ctl">
-            <div class="row"><label>Utilisation</label><span class="val" id="vUtil">70%</span></div>
-            <input type="range" id="sUtil" min="30" max="95" step="1" value="70">
+            <div class="row"><label>Utilisation</label><span class="val" id="vUtil">65%</span></div>
+            <input type="range" id="sUtil" min="45" max="85" step="1" value="65">
+            <div class="rnote">merchant-only fleets achieve 45–60% — the 65% default assumes partial anchor contracting (see Positioning) · above 75% assumes full take-or-pay</div>
           </div>
           <div class="warn" id="warn"></div>
+          <div class="flag" id="flag"></div>
         </div>
 
         <div class="out">
           <div class="headline">
             <div class="hcard"><div class="n" id="oCapex">—</div><div class="l">Capital needed</div></div>
-            <div class="hcard profit" id="oEbitdaCard"><div class="n" id="oEbitda">—</div><div class="l">Annual profit (EBITDA)</div></div>
-            <div class="hcard"><div class="n" id="oPay">—</div><div class="l">Payback</div></div>
+            <div class="hcard profit" id="oEbitdaCard"><div class="n" id="oEbitda">—</div><div class="l">Annual EBITDA (yr 1)</div></div>
+            <div class="hcard"><div class="n" id="oPay">—</div><div class="l">Payback (EBITDA, contracted)*</div></div>
           </div>
           <div class="bars">
             <div class="barrow"><div class="t"><span>Revenue / yr</span><span id="oRev">—</span></div><div class="track"><div class="fill" id="bRev" style="background:var(--bar-rev)"></div></div></div>
             <div class="barrow"><div class="t"><span>Operating cost / yr</span><span id="oOpex">—</span></div><div class="track"><div class="fill" id="bOpex" style="background:var(--bar-opex)"></div></div></div>
-            <div class="barrow"><div class="t"><span>Profit / yr</span><span id="oProfit">—</span></div><div class="track"><div class="fill" id="bProfit" style="background:var(--bar-profit)"></div></div></div>
+            <div class="barrow"><div class="t"><span>EBITDA / yr</span><span id="oProfit">—</span></div><div class="track"><div class="fill" id="bProfit" style="background:var(--bar-profit)"></div></div></div>
           </div>
           <div class="metrics">
             <div class="metric"><div class="l">EBITDA margin</div><div class="n" id="oMargin">—</div></div>
-            <div class="metric"><div class="l">Facility power</div><div class="n" id="oPower">—</div></div>
+            <div class="metric"><div class="l">Facility power (avg / peak)</div><div class="n" id="oPower">—</div></div>
+            <div class="metric"><div class="l">Revenue / GPU / yr</div><div class="n" id="oRevGpu">—</div></div>
+            <div class="metric"><div class="l">After GPU refresh reserve*</div><div class="n" id="oNet">—</div></div>
+            <div class="metric"><div class="l">Unlevered yield after refresh</div><div class="n" id="oYield">—</div></div>
+            <div class="metric"><div class="l">Break-even utilisation (incl. refresh)</div><div class="n" id="oBeUtil">—</div></div>
           </div>
+          <div class="fineprint">*Payback assumes take-or-pay contracts covering at least the first ~3 years; the tail beyond contract tenor assumes re-contracting at then-current rates and is flagged when applicable. Uncontracted (merchant) revenue is exposed to rate decline: H200 rents are widely expected to fall 15–30%/yr as newer chips ramp (the H100 fell ~65% in two years; L40S-class inference rates are also drifting down ~10–15%/yr). "After refresh reserve" is EBITDA minus a straight-line reserve to replace GPUs every 5 years at 85% of cost (15% resale). Figures are unlevered and pre-ramp: Nigerian USD project debt runs ~10–12% (DFI/blended finance is the intended route — see assumptions), and first revenue follows an 18–30 month build plus a 6–12 month fill ramp. The default case is deliberately conservative — the levers that close the gap to a financeable yield are anchor take-or-pay at 75%+ utilisation, concessional DFI debt, and the managed-services layer running on the same capital.</div>
         </div>
       </div>
     </div>
@@ -246,7 +265,7 @@
     <h3 style="margin-top:34px;font-size:20px">Same fleet, three ways — side by side</h3>
     <p class="lead" style="margin-bottom:6px">At your current GPU count, rate and utilisation.</p>
     <table id="cmp">
-      <thead><tr><th>Pathway</th><th>Capital</th><th>Profit / yr</th><th>Margin</th><th>Payback</th></tr></thead>
+      <thead><tr><th>Pathway</th><th>Capital</th><th>EBITDA / yr</th><th>After refresh*</th><th>Margin</th><th>Payback</th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
@@ -256,13 +275,13 @@
 <section>
   <div class="wrap">
     <div class="eyebrow">Competitive position</div>
-    <h2>Ahead of the field, fast</h2>
-    <p class="lead">Africa's incumbents rent space and power, not GPUs. At scale this becomes the continent's leading independent AI compute provider.</p>
+    <h2>The window is open — and measured in quarters</h2>
+    <p class="lead">Africa's first at-scale AI cluster (Cassava × NVIDIA, 3,000 GPUs) went live in Cape Town in March 2026; its Nigeria deployment is planned but not yet live. In Lagos, Udutech's GPU Hub rents small-scale inference GPUs (live since Aug 2025, under $1/hr), Airtel Nxtra began going live around Q1 2026 (telco cloud and inference scale), MTN adds capacity H2 2026, and Kasi Cloud's first 5.5 MW commissions mid-2026. As of early July 2026, no publicly confirmed 1,000-plus-GPU training-class cluster operates in Nigeria — that is the gap this project fills. Moving now means being at scale when the CBN's January 2027 deadline forces every bank, fintech and switch to store and manage payment data in-country — making locally hosted AI on that data far simpler than shipping it offshore.</p>
     <div class="stats">
-      <div class="stat"><div class="big">~1,600</div><div class="lab">GPUs at $100M</div><div class="sub">already among Africa's largest clusters</div></div>
-      <div class="stat"><div class="big">~4,800</div><div class="lab">GPUs at $300M</div><div class="sub">more than Cassava's entire current fleet</div></div>
-      <div class="stat"><div class="big">~8,100</div><div class="lab">GPUs at $500M</div><div class="sub">likely the largest single cluster in Africa</div></div>
-      <div class="stat"><div class="big">Anchor</div><div class="lab">Route to revenue</div><div class="sub">sign 3–5 bank/telco/govt clients first</div></div>
+      <div class="stat"><div class="big">~1,600</div><div class="lab">GPUs at $100M</div><div class="sub">all-in, grid path — multiples of any live Nigerian cluster today</div></div>
+      <div class="stat"><div class="big">~4,800</div><div class="lab">GPUs at $300M</div><div class="sub">larger than any live African cluster today (Cape Town: 3,000)</div></div>
+      <div class="stat"><div class="big">~7,300</div><div class="lab">GPUs at $500M</div><div class="sub">own-build path — would rank among Africa's largest single sites</div></div>
+      <div class="stat"><div class="big">Anchor</div><div class="lab">Route to revenue</div><div class="sub">sign 3–5 bank/telco/govt take-or-pay clients before build-out</div></div>
     </div>
   </div>
 </section>
@@ -274,9 +293,9 @@
   <!-- SERVICES HERO -->
   <div class="hero">
     <div class="wrap">
-      <div class="eyebrow">Managed AI Services · Nigeria · Investor Brief</div>
+      <div class="eyebrow">Managed AI Services · Nigeria · Investor Brief · July 2026</div>
       <h1>Sell AI Outcomes, Not Rented Chips</h1>
-      <p>We run the software on cost-optimised hardware; clients pay a fixed fee for a finished AI product — never a token bill.</p>
+      <p>We run the software on cost-optimised hardware; clients pay a fixed fee for a finished AI product — never a token bill. Priced against what Nigerian enterprises actually pay today.</p>
       <span class="tag">Interactive — model the client economics below</span>
     </div>
   </div>
@@ -285,12 +304,12 @@
   <section><div class="wrap">
     <div class="eyebrow">The model</div>
     <h2>A different business on the same hardware</h2>
-    <p class="lead">Because we own the software stack, we run cheaper AMD/NPU chips the customer never sees — and bill in fixed, predictable fees instead of usage tokens. Higher margins, stickier contracts, data kept in-country.</p>
+    <p class="lead">Because we own the software stack, we run right-sized inference silicon the customer never sees — and bill in fixed, predictable fees instead of usage tokens. Sticky contracts, data kept in-country, and unit costs a fraction of training-grade infrastructure.</p>
     <div class="stats">
-      <div class="stat"><div class="big">2–3×</div><div class="lab">cheaper hardware</div><div class="sub">AMD MI300 vs NVIDIA</div></div>
+      <div class="stat"><div class="big">~$12k</div><div class="lab">per inference GPU vs ~$46k training</div><div class="sub">L40S-class vs H200-class, all-in deployed cost</div></div>
       <div class="stat"><div class="big">No tokens</div><div class="lab">fixed-fee pricing</div><div class="sub">subscription / per-transaction</div></div>
-      <div class="stat"><div class="big">~7</div><div class="lab">clients to break even</div><div class="sub">then near-pure margin</div></div>
-      <div class="stat"><div class="big">Local</div><div class="lab">data stays in Nigeria</div><div class="sub">localisation = built-in moat</div></div>
+      <div class="stat"><div class="big">6–7</div><div class="lab">clients to break even</div><div class="sub">then high incremental margin</div></div>
+      <div class="stat"><div class="big">Jan 2027</div><div class="lab">CBN localisation deadline</div><div class="sub">payment-transaction data must be stored &amp; managed in Nigeria — a market-wide demand driver</div></div>
     </div>
   </div></section>
 
@@ -309,56 +328,62 @@
   <!-- PRICING DETAIL -->
   <section><div class="wrap">
     <div class="eyebrow">Pricing & unit economics</div>
-    <h2>What we charge — and why it's high-margin</h2>
-    <p class="lead">Benchmarked against what Nigerian enterprises already pay incumbents like Smile ID, Prembly and global fraud vendors. We price at or just below them — on cheaper hardware — so we win on price and keep the margin.</p>
+    <h2>What we charge — and why it holds up</h2>
+    <p class="lead">Benchmarked against what Nigerian enterprises already pay incumbents like Smile ID, Dojah and global fraud vendors. Our cost advantage is in the AI inference layer — right-sized silicon we own and operate — so we price at or just below the market and keep the margin.</p>
     <table>
       <thead><tr><th>Product</th><th>Pricing model</th><th>Market benchmark</th><th>Our target</th></tr></thead>
       <tbody>
-        <tr><td>Fraud &amp; risk scoring</td><td>Annual subscription</td><td>$200k–500k global enterprise</td><td>$80k–200k / bank / yr</td></tr>
-        <tr><td>KYC / identity checks</td><td>Per check</td><td>$0.10–1.00 (Smile ID, Prembly)</td><td>$0.15–0.50 / check</td></tr>
+        <tr><td>Fraud &amp; risk scoring</td><td>Annual subscription</td><td>$150k–500k global vendors (Actimize/Feedzai-class); $30k–100k mid-tier tools</td><td>$60k–200k / bank / yr</td></tr>
+        <tr><td>Document &amp; biometric AI checks</td><td>Per check</td><td>doc verification $0.10–0.35; biometric $0.25–1.00</td><td>$0.08–0.35 / check</td></tr>
+        <tr><td>ID lookups (BVN/NIN)</td><td>Per query</td><td>$0.03–0.10 (Dojah publishes $0.04–0.06)</td><td>not our product — NIBSS/NIMC-licensed database calls with pass-through fees, not a GPU workload; offered only bundled via licensed partners</td></tr>
         <tr><td>Document AI</td><td>Per doc / subscription</td><td>varies widely</td><td>$0.05–0.30 / doc</td></tr>
-        <tr><td>AI assistant / copilot</td><td>Per seat / month</td><td>$20–100 / seat</td><td>$20–60 / seat / mo</td></tr>
+        <tr><td>AI assistant / copilot</td><td>Per seat / month</td><td>$21–75 / seat global list</td><td>$10–30 / seat / mo</td></tr>
       </tbody>
     </table>
     <div class="stats" style="margin-top:24px">
-      <div class="stat"><div class="big">₦52bn</div><div class="lab">lost to fraud in 2024</div><div class="sub">Nigerian banks — the budget that funds a fraud product</div></div>
-      <div class="stat"><div class="big">85–90%</div><div class="lab">gross margin / client</div><div class="sub">compute per inference is cents; the team is the fixed cost</div></div>
-      <div class="stat"><div class="big">2–3×</div><div class="lab">cheaper to run</div><div class="sub">AMD + open models vs NVIDIA + frontier APIs</div></div>
-      <div class="stat"><div class="big">Custom</div><div class="lab">enterprise contracts</div><div class="sub">no published prices — room to localise & negotiate</div></div>
+      <div class="stat"><div class="big">₦25.9bn</div><div class="lab">payment-fraud losses, 2025</div><div class="sub">NIBSS — excluding a single ₦31bn incident in 2024, underlying losses have risen every year (₦17.7bn → ~₦21bn → ₦25.9bn): the recurring line banks budget prevention against</div></div>
+      <div class="stat"><div class="big">~80%</div><div class="lab">contribution margin / client</div><div class="sub">compute per inference is cents; the team is the fixed cost</div></div>
+      <div class="stat"><div class="big">₦518bn</div><div class="lab">top banks' IT spend, 2024</div><div class="sub">a $100k AI subscription is ~0.1–0.3% of a tier-1 bank's IT budget</div></div>
+      <div class="stat"><div class="big">Custom</div><div class="lab">enterprise contracts</div><div class="sub">no published prices — room to localise &amp; negotiate</div></div>
     </div>
-    <div class="disc" style="margin-top:22px"><strong>Worked example — one mid-tier bank.</strong> A fraud-scoring subscription at ~$120k/yr. Compute to score its transactions on our AMD platform costs a few hundred dollars a month; support and model upkeep a few thousand. Contribution after direct cost is ~$100k/yr — so roughly <strong>7 such clients cover the entire engineering team</strong>, and every client after that is nearly pure profit. This is why the model breaks even fast and then scales at 85%+ incremental margin.</div>
+    <div class="disc" style="margin-top:22px"><strong>Worked example — one tier-2 bank.</strong> A fraud-scoring subscription at ~$120k/yr — a global-vendor-class product (the Actimize/Feedzai tier runs $150k–500k) at a 20–75% discount. Direct cost — inference compute, support and model upkeep — runs ~$20k/yr, leaving ~$100k contribution (~80%). So roughly <strong>6–7 such clients cover the core engineering team</strong>, and each client after that lands at ~80% incremental margin. The realistic universe is ~26 commercial banks, 4 large telcos and 10–15 scaled fintechs — the model below caps clients accordingly. One prerequisite stated plainly: identity products require NIBSS/NIMC-licensed data access, which is the incumbents' real moat. Our fraud scoring, document AI and biometric liveness checks do not depend on it; verification against BVN/NIN reference photos is offered only via licensed partners, like lookups.</div>
   </div></section>
 
   <!-- SERVICES CALCULATOR -->
   <section><div class="wrap">
-    <div class="eyebrow">Interactive model</div>
+    <div class="eyebrow">Interactive model · market data as of July 2026</div>
     <h2>Size the services business</h2>
-    <p class="lead">Drag the sliders — client economics recalculate live. Illustrative planning estimates.</p>
+    <p class="lead">Drag the sliders — client economics recalculate live. Ranges are capped at what the Nigerian market can actually supply; stretch settings are flagged in amber.</p>
     <div class="calc">
       <div class="tabs" id="svcTabs">
         <button class="tab active" data-mode="subs">Enterprise subscriptions</button>
-        <button class="tab" data-mode="kyc">Per-transaction (KYC)</button>
+        <button class="tab" data-mode="kyc">Per-transaction (doc &amp; biometric AI)</button>
       </div>
       <div class="calc-body">
         <div class="controls">
           <div class="ctl">
             <label>Hardware</label>
             <div class="toggle" id="svcHw">
-              <button data-hw="amd" class="on">AMD MI300</button>
-              <button data-hw="npu">NPU (Ascend)</button>
-              <button data-hw="nvidia">NVIDIA</button>
+              <button data-hw="l40s" class="on">NVIDIA L40S</button>
+              <button data-hw="amd">AMD MI300X</button>
+              <button data-hw="h200">NVIDIA H200</button>
             </div>
           </div>
-          <div class="ctl"><div class="row"><label>Accelerators (chips)</label><span class="val" id="vChips">32</span></div><input type="range" id="sChips" min="8" max="256" step="8" value="32"></div>
-          <div class="ctl mode-subs"><div class="row"><label>Enterprise clients</label><span class="val" id="vClients">12</span></div><input type="range" id="sClients" min="1" max="40" step="1" value="12"></div>
-          <div class="ctl mode-subs"><div class="row"><label>Avg contract value ($ / yr)</label><span class="val" id="vContract">$120k</span></div><input type="range" id="sContract" min="40000" max="300000" step="5000" value="120000"></div>
-          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>Total checks / month</label><span class="val" id="vVol">1.0M</span></div><input type="range" id="sVol" min="50000" max="50000000" step="50000" value="1000000"></div>
-          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>Price per check</label><span class="val" id="vPrice">$0.30</span></div><input type="range" id="sPrice" min="0.10" max="0.60" step="0.01" value="0.30"></div>
+          <div class="ctl"><div class="row"><label>Accelerators (chips)</label><span class="val" id="vChips">8</span></div><input type="range" id="sChips" min="8" max="128" step="8" value="8"></div>
+          <div class="ctl mode-subs"><div class="row"><label>Enterprise clients</label><span class="val" id="vClients">10</span></div><input type="range" id="sClients" min="1" max="25" step="1" value="10">
+            <div class="rnote">universe: ~26 banks + 4 telcos + 10–15 scaled fintechs · 5–12 is a credible 3-yr base case</div></div>
+          <div class="ctl mode-subs"><div class="row"><label>Avg contract value ($ / yr)</label><span class="val" id="vContract">$120k</span></div><input type="range" id="sContract" min="30000" max="250000" step="5000" value="120000">
+            <div class="rnote">tier-1s pay $150–500k for global vendors · mid-tier tools clear at $30–100k</div></div>
+          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>AI checks / month</label><span class="val" id="vVol">750k</span></div><input type="range" id="sVol" min="50000" max="2500000" step="50000" value="750000">
+            <div class="rnote">Smile ID, the continental leader, runs ~100M checks/yr across all of Africa</div></div>
+          <div class="ctl mode-kyc" style="display:none"><div class="row"><label>Price per check</label><span class="val" id="vPrice">$0.18</span></div><input type="range" id="sPrice" min="0.05" max="0.40" step="0.01" value="0.18">
+            <div class="rnote">doc verification $0.10–0.35 · full biometric $0.25–1.00 · basic lookups $0.03–0.10</div></div>
           <div class="warn" id="svcWarn"></div>
+          <div class="flag" id="svcFlag"></div>
         </div>
         <div class="out">
           <div class="headline">
-            <div class="hcard"><div class="n" id="svcCapex">—</div><div class="l">Platform capital</div></div>
+            <div class="hcard"><div class="n" id="svcCapex">—</div><div class="l">Capital to break-even</div></div>
             <div class="hcard profit" id="svcEbitdaCard"><div class="n" id="svcEbitda">—</div><div class="l">Annual profit (EBITDA)</div></div>
             <div class="hcard"><div class="n" id="svcPay">—</div><div class="l">Payback</div></div>
           </div>
@@ -371,6 +396,7 @@
             <div class="barrow"><div class="t"><span>Operating cost / yr</span><span id="svcOpex">—</span></div><div class="track"><div class="fill" id="svcbOpex" style="background:var(--bar-opex)"></div></div></div>
             <div class="barrow"><div class="t"><span>Profit / yr</span><span id="svcProfit">—</span></div><div class="track"><div class="fill" id="svcbProfit" style="background:var(--bar-profit)"></div></div></div>
           </div>
+          <div class="fineprint">Fixed cost = core team + facility ($500k/yr) plus $6k per chip per year for hosting and maintenance. Team costs are the real investment, so "capital to break-even" = hardware plus 18 months of fixed-cost runway — enterprise bank sales cycles run 9–18 months, and payback is computed on that base, not on chips alone.</div>
         </div>
       </div>
     </div>
@@ -379,62 +405,121 @@
 
 </div><!-- /page-services -->
 
+<!-- ASSUMPTIONS -->
+<section class="assume">
+  <div class="wrap">
+    <div class="eyebrow">Full transparency</div>
+    <h2>Assumptions &amp; sources</h2>
+    <p class="lead">Every constant in the model, the market range it sits in, and where it comes from. All data mid-2026; FX ₦1,395/$.</p>
+    <table>
+      <thead><tr><th style="width:26%">Assumption</th><th style="width:22%">Value used</th><th style="width:28%">Market range</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>H200 capex, all-in per deployed GPU</td><td>$46,000 (Ethernet fabric)</td><td>$42k–58k (InfiniBand at the top). H200 chosen as the mid-2026 price/performance value tier as Blackwell ramps — B200 needs higher-density liquid cooling and carries allocation risk for a new operator; revisit at order date</td><td><a href="https://www.mercatus-ai.com/blog/h200-price">Mercatus AI, May 2026</a>; SemiAnalysis cluster BoM</td></tr>
+        <tr><td>L40S capex, all-in per deployed GPU</td><td>$12,000</td><td>$10k–14.5k</td><td>Supermicro/Thinkmate configs, 2026</td></tr>
+        <tr><td>Import duty, VAT &amp; logistics on IT</td><td>assumed mitigated via free-trade-zone siting (Lekki FTZ-style) / pioneer status</td><td>non-FTZ adds ~8–15% to IT capex</td><td>Nigeria Customs tariff; structuring to be confirmed in diligence</td></tr>
+        <tr><td>Power per deployed GPU (server-level)</td><td>1.15 kW average (energy model) · 1.28 kW peak (connection sizing) · L40S 0.53/0.60 kW</td><td>0.95–1.3 / 0.45–0.6 kW</td><td><a href="https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html">NVIDIA DGX datasheet</a> (10.2 kW ÷ 8 = 1.28 peak)</td></tr>
+        <tr><td>PUE by pathway</td><td>1.35 own (requires full direct-to-chip liquid; Kasi's Lagos AI campus targets 1.6 — treat 1.45–1.5 as the sensitivity case) · 1.45 grid build (hybrid air + liquid) · 1.60 colo</td><td>1.25–1.8 tropical climate; air-only runs 1.5+</td><td>Singapore tropical benchmarks; Rack Centre design targets</td></tr>
+        <tr><td>Facility build capex</td><td>$13.0M/MW-IT grid site (incl. N+1 gas backup, ~$1.5M/MW) · $17.5M/MW-IT own (incl. generation plant) · colo: $1,700/kW-IT fit-out (racks, PDUs, cabling, deposits). Applied to peak IT load (1.28 kW/GPU) — same basis as the capacity ceiling</td><td>Lagos $8.3–15M/MW + AI premium; gas gen $0.8–2M/MW installed</td><td><a href="https://www.turnerandtownsend.com/insights/data-centre-construction-cost-index-2025-2026/">Turner &amp; Townsend 2025–26</a>; Rack Centre LGS2 / OADC actuals</td></tr>
+        <tr><td>Power cost — grid pathway</td><td>$0.155/kWh (dedicated supply at Band A-level tariff + N+1 gas backup blend)</td><td>Band A ₦209.5/kWh ≈ $0.15; blended $0.10–0.20; Band A 20h/day is a minimum, frequently missed</td><td>NERC MYTO Dec 2025 @ ₦1,395/$</td></tr>
+        <tr><td>Power cost — own generation</td><td>$0.095/kWh captive pipeline gas — fuel + O&amp;M + deliberate headroom, with the generation plant ALSO capitalised in the build cost (a conservative double-cover, not an error)</td><td>$0.07–0.14 pipeline gas all-in · flared-gas deals $0.04–0.10 are upside only (gas is auctioned, not free; sites far from Lagos fibre)</td><td>NMDPRA gas pricing; NGFCP programme</td></tr>
+        <tr><td>Power + space — colocation</td><td>$0.18/kWh + rack ops in fixed opex</td><td>no public Lagos GPU-colo price exists — operator quotes required</td><td>Xalam West Africa brief; Arizton (paywalled)</td></tr>
+        <tr><td>Financing</td><td>not modelled — figures are unlevered project economics</td><td>Nigerian USD project debt ~10–12%; intended route: DFI/blended finance (IFC-Raxio $100M precedent; Afreximbank SOFR+400bps)</td><td>Nigeria eurobond curve; CoreWeave facilities for comparison</td></tr>
+        <tr><td>H200 rental rate</td><td>slider $2.00–4.50, default $3.20</td><td>contracted $2.10–3.50 · on-demand median ~$3.90 · Africa premium 1.0–1.4×</td><td><a href="https://getdeploying.com/gpus/nvidia-h200">GetDeploying, 5 Jul 2026</a></td></tr>
+        <tr><td>L40S rental rate</td><td>slider $0.70–1.60, default $1.15</td><td>median $1.19 · range $0.55–1.90 (spot dips lower); inference rates declining ~10–15%/yr</td><td><a href="https://getdeploying.com/gpus/nvidia-l40s">GetDeploying, 5 Jul 2026</a></td></tr>
+        <tr><td>Utilisation</td><td>slider 45–85%, default 65% (assumes partial anchor contracting)</td><td>merchant-only new entrants 45–60%; &gt;75% requires take-or-pay anchors; break-even ~70% when debt-financed</td><td>Neocloud unit-economics analyses, 2026</td></tr>
+        <tr><td>GPU useful life &amp; residual</td><td>5 years, 15% residual</td><td>industry books 4–6 yrs; used H100s trade at 25–40% after 2–3 yrs</td><td>Nebius (4y) / AWS (5y) / CoreWeave (6y); Hashrate Index used-GPU study</td></tr>
+        <tr><td>Rental price erosion</td><td>shown as year-1; plan 15–30%/yr decline</td><td>H100 fell ~65% in 2 years</td><td><a href="https://www.silicondata.com/blog/h100-rental-price-over-time">Silicon Data H100 index</a></td></tr>
+        <tr><td>Ops &amp; maintenance per GPU</td><td>$3,500/yr training · $1,500/yr inference (colo: $5,500/$2,400 incl. rack rent)</td><td>bottom-up at 4,000 GPUs: ~$14M/yr covers ops/engineering team, network transit, insurance, SG&amp;A — Lagos cost base</td><td>bottom-up build; cross-checked vs neocloud unit-economics analyses</td></tr>
+        <tr><td>KYC / doc-AI check price</td><td>slider $0.05–0.40</td><td>lookups $0.03–0.10 · doc $0.10–0.35 · biometric $0.25–1.00</td><td><a href="https://dojah.io/pricing">Dojah published pricing, 2026</a></td></tr>
+        <tr><td>Serviceable AI-check volume</td><td>slider ≤2.5M/month (flagged above 1M/month ≈ 12M/yr)</td><td>Smile ID ≈100M/yr across all Africa after 7 yrs; new entrant 1–20M/yr</td><td>Smile ID / Disrupt Africa, Nov 2024</td></tr>
+        <tr><td>Enterprise clients &amp; contract value</td><td>≤25 clients · $30k–250k/yr</td><td>~26 banks + 4 telcos + 10–15 scaled fintechs; tier-1s pay $150–500k for global vendors</td><td>CBN licensed-bank list; AML vendor comparisons</td></tr>
+        <tr><td>Fraud-loss context</td><td>₦52.26bn (2024) · ₦25.85bn (2025)</td><td>~60% of the 2024 figure was a single incident</td><td>NIBSS Annual Fraud Landscape</td></tr>
+        <tr><td>Competition (for honesty)</td><td colspan="2">Udutech Lagos GPU Hub: live Aug 2025, small-scale inference GPUs under $1/hr (supplies Kasi) · Cassava×NVIDIA: 3,000 GPUs live Cape Town, 12,000 planned incl. Nigeria · Airtel Nxtra Lagos ~Q1 2026 · MTN H2 2026 · Kasi Cloud $250M, first 5.5 MW ~mid-2026. Differentiation: at-scale training-class capacity + the managed-services layer, not small-fleet inference rental</td><td>TechCabal / DCD, Aug 2025–Feb 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <div class="footer">
   <div class="wrap">
-    <div class="disc"><strong>Disclaimer.</strong> All figures are illustrative, planning-grade estimates built from public 2026 market data (GPU pricing, cloud rental rates, Nigerian cost benchmarks, FX ₦1,400/$). They are intended to explore sensitivities, not to serve as audited projections. Confirm with vendor quotes and a detailed engineering and financial study before any investment decision. Confidential.</div>
+    <div class="disc"><strong>Disclaimer.</strong> All figures are illustrative, planning-grade estimates built from the public mid-2026 market data listed above (FX ₦1,395/$). The model shows steady-state year-one economics at today's rates and includes a GPU refresh reserve; it does not model the construction period, utilisation ramp, financing costs (intended route: DFI/blended debt — see assumptions), tax, FX movement or year-by-year rate erosion. Figures are intended to explore sensitivities, not to serve as audited projections. Confirm with vendor quotes and a detailed engineering and financial study before any investment decision. Confidential.</div>
   </div>
 </div>
 
 <script>
 (function(){
-  var HOURS=8760, PUE=1.3;
+  var HOURS=8760;
   var GPU={
-    training:{compute:40000, kw:1.3},
-    inference:{compute:14000, kw:0.7}
+    training:{compute:46000, kw:1.15, kwPeak:1.28, life:5, residual:0.15, contractedTop:3.5, band:'$2.10–3.50 for H200-class',
+      rate:{min:2.0, max:4.5, step:0.1, def:3.2, odMedian:3.9,
+        note:'contracted 1–3yr: $2.10–3.50 · on-demand median ~$3.90 (GetDeploying, Jul 2026)'}},
+    inference:{compute:12000, kw:0.53, kwPeak:0.60, life:5, residual:0.15, contractedTop:1.19, band:'at or below the ~$1.19 median for L40S-class',
+      rate:{min:0.7, max:1.6, step:0.05, def:1.15, odMedian:1.19,
+        note:'market median ~$1.19 · credible providers $0.70–1.60; spot dips lower but is uneconomic here (GetDeploying, Jul 2026)'}}
   };
   var PATH={
-    colo:{label:'Rent racks (colocation)', overhead:3000, tariff:0.20, ops:4500, cap:400, defN:30,
-      note:'Buy GPUs, rent rack space. Lowest capital and fastest to launch, but you pay rack rent (built into operating cost here) for as long as you run. Best as a pilot to prove demand.'},
-    grid:{label:'Build on the 15 MW grid', overhead:22000, tariff:0.12, ops:4000, cap:8900, defN:4800,
-      note:'An existing 15 MW grid runs 24/7 — no land or power plant to build, so ~65% of capital goes to GPUs. The 15 MW caps the site at ~8,900 GPUs.'},
-    own:{label:'Build own facility', overhead:40000, tariff:0.045, ops:4000, cap:12000, defN:1800,
-      note:'Build the site and self-generate (flared gas + solar). Highest upfront capital, but near-free fuel gives the lowest running cost and no grid ceiling.'}
+    colo:{label:'Rent racks (colocation)', kwCapex:1700, tariff:0.18, ops:{training:5500,inference:2400}, pue:1.6, mwCap:2, defN:200,
+      note:'Buy GPUs, rent ready racks. GPU-ready colocation in Lagos is scarce (24 kW+ racks only at the newest sites); the 2 MW ceiling assumes a committed high-density allocation that no operator publicly offers today — operator quote required. Pilot-scale entry: fastest to launch and proves demand, but pass-through power and rack rent make it the thinnest margin.'},
+    grid:{label:'Build on the 15 MW grid', kwCapex:13000, tariff:0.155, ops:{training:3500,inference:1500}, pue:1.45, mwCap:15, defN:4000,
+      note:'The existing 15 MW connection (dedicated supply at Band A-level tariff) powers the site without building generation. Band A commits to a 20h/day minimum that is frequently missed, so full N+1 gas backup is designed in — blended ~$0.155/kWh. 15 MW supports ~8,000 training GPUs at peak load. Build: 18–30 months post-permits.'},
+    own:{label:'Build own facility', kwCapex:17500, tariff:0.095, ops:{training:3500,inference:1500}, pue:1.35, mwCap:20, defN:2000,
+      note:'Build the facility and self-generate with captive pipeline gas (~$0.095/kWh fuel + O&M with headroom; the plant is also capitalised in the build cost — deliberately conservative). Flared-gas supply agreements could cut this further but are siting- and counterparty-constrained — treated as upside, not base case. Modelled first phase: 20 MW. 24–30 months from ground-break, plus 6–12 months for land, permits and gas agreements.'}
   };
 
-  var state={path:'grid', gpu:'training', N:4800, rate:3.0, util:0.70};
+  var state={path:'grid', gpu:'training', N:4000, rate:3.2, util:0.65};
 
   function fmtUSD(v){
     var a=Math.abs(v);
-    if(a>=1e9) return (v/1e9).toFixed(2).replace(/\.00$/,'')+'bn';
-    if(a>=1e6) return '$'+(v/1e6).toFixed(1)+'M';
+    if(a>=999.5e6) return '$'+(v/1e9).toFixed(2)+'bn';
+    if(a>=999.5e3) return '$'+(v/1e6).toFixed(1)+'M';
     if(a>=1e3) return '$'+Math.round(v/1e3)+'k';
     return '$'+Math.round(v);
   }
   function fmtBn(v){ return (v>=1e9)?('$'+(v/1e9).toFixed(2)+'bn'):fmtUSD(v); }
 
+  // connection/build capacity is sized to PEAK server power, not the energy-model average
+  function capFor(pathKey,gpuKey){
+    var p=PATH[pathKey], g=GPU[gpuKey];
+    return Math.floor(p.mwCap*1000/(p.pue*g.kwPeak)/50)*50;
+  }
+
   function calc(pathKey,gpuKey,N,rate,util){
     var g=GPU[gpuKey], p=PATH[pathKey];
-    var capexPerGpu=g.compute+p.overhead;
+    // facility is built (and priced) to PEAK IT load, same basis as the capacity cap
+    var capexPerGpu=g.compute+p.kwCapex*g.kwPeak;
     var capex=N*capexPerGpu;
-    var kwIT=N*g.kw;
-    var facilityMW=kwIT*PUE/1000;
-    var powerPerGpu=g.kw*PUE*HOURS*p.tariff;
-    var opex=N*(powerPerGpu+p.ops);
+    var mwAvg=N*g.kw*p.pue/1000;
+    var mwPeak=N*g.kwPeak*p.pue/1000;
+    var powerPerGpu=g.kw*p.pue*HOURS*p.tariff;   // energy billed on average draw
+    var opex=N*(powerPerGpu+p.ops[gpuKey]);
     var revenue=N*rate*HOURS*util;
     var ebitda=revenue-opex;
+    var refresh=N*g.compute*(1-g.residual)/g.life;
+    var net=ebitda-refresh;
     var margin=revenue>0?ebitda/revenue:0;
     var payback=ebitda>0?capex/ebitda:Infinity;
-    return {capex:capex,opex:opex,revenue:revenue,ebitda:ebitda,margin:margin,payback:payback,facilityMW:facilityMW};
+    var yieldNet=capex>0?net/capex:0;
+    var beUtil=(rate>0)?(powerPerGpu+p.ops[gpuKey]+g.compute*(1-g.residual)/g.life)/(rate*HOURS):0;
+    return {capex:capex,opex:opex,revenue:revenue,ebitda:ebitda,net:net,margin:margin,payback:payback,mwAvg:mwAvg,mwPeak:mwPeak,revPerGpu:N>0?revenue/N:0,yieldNet:yieldNet,beUtil:beUtil};
+  }
+
+  function payStr(p){
+    if(p===Infinity) return 'no payback';
+    if(p>15) return '15+ yrs';
+    return p.toFixed(1)+' yrs';
   }
 
   function render(){
-    var p=PATH[state.path];
+    var p=PATH[state.path], g=GPU[state.gpu];
     document.getElementById('pathnote').textContent=p.note;
+    document.getElementById('rateNote').textContent=g.rate.note;
 
-    // slider bounds per pathway
+    // slider bounds per pathway + GPU type — set max BEFORE value so the browser never clamps to a stale max
     var sGpu=document.getElementById('sGpu');
-    sGpu.max=p.cap;
-    if(state.N>p.cap){ state.N=p.cap; sGpu.value=p.cap; }
+    var cap=capFor(state.path,state.gpu);
+    sGpu.max=cap;
+    if(state.N>cap){ state.N=cap; }
+    sGpu.value=state.N;
 
     var r=calc(state.path,state.gpu,state.N,state.rate,state.util);
 
@@ -448,59 +533,112 @@
     document.getElementById('oProfit').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda))+'/yr';
     document.getElementById('oEbitda').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda));
     document.getElementById('oMargin').textContent=(r.margin*100).toFixed(0)+'%';
-    document.getElementById('oPower').textContent=r.facilityMW.toFixed(1)+' MW';
-    document.getElementById('oPay').textContent=(r.payback===Infinity||r.payback>40)?'—':r.payback.toFixed(1)+' yrs';
+    document.getElementById('oPower').textContent=r.mwAvg.toFixed(1)+' / '+r.mwPeak.toFixed(1)+' MW';
+    document.getElementById('oRevGpu').textContent=fmtUSD(r.revPerGpu);
+    document.getElementById('oNet').textContent=(r.net>=0?'':'–')+fmtUSD(Math.abs(r.net))+'/yr';
+    document.getElementById('oYield').textContent=(r.yieldNet*100).toFixed(1)+'%';
+    document.getElementById('oBeUtil').textContent=(r.beUtil>1)?'>100%':(r.beUtil*100).toFixed(0)+'%';
+    document.getElementById('oPay').textContent=payStr(r.payback);
 
     var card=document.getElementById('oEbitdaCard');
     card.className='hcard '+(r.ebitda>=0?'profit':'loss');
 
-    // bars scaled to revenue
+    // bars scaled to the larger of revenue/opex
     var base=Math.max(r.revenue, r.opex, 1);
-    document.getElementById('bRev').style.width='100%';
+    document.getElementById('bRev').style.width=(r.revenue/base*100)+'%';
     document.getElementById('bOpex').style.width=Math.min(100,r.opex/base*100)+'%';
     document.getElementById('bProfit').style.width=Math.max(0,Math.min(100,r.ebitda/base*100))+'%';
     document.getElementById('bProfit').style.background=r.ebitda>=0?'var(--bar-profit)':'var(--red)';
 
-    // grid slider fill
+    // slider fill
     document.querySelectorAll('input[type=range]').forEach(function(s){
       var pct=(s.value-s.min)/(s.max-s.min)*100;
       s.style.background='linear-gradient(90deg,var(--teal) '+pct+'%,#fff '+pct+'%)';
     });
 
-    // warning
-    var w=document.getElementById('warn');
-    if(state.path==='grid' && state.N>=8900){ w.textContent='At the 15 MW grid ceiling (~8,900 GPUs). Growing further needs more power.'; }
-    else if(r.ebitda<0){ w.textContent='Loss at this rate & utilisation — the fixed costs outweigh revenue.'; }
-    else w.textContent='';
+    // red warnings (deal-breakers) + amber flags (upside-case labelling)
+    var w=document.getElementById('warn'), f=document.getElementById('flag');
+    var warns=[], flags=[];
+    if(r.ebitda<0){
+      warns.push('Stress case: loss at these settings — rate and utilisation are below break-even.');
+    } else if(r.net<0){
+      warns.push('EBITDA doesn’t cover the GPU refresh reserve at these settings — the fleet can’t replace itself. Raise rate, utilisation or contract mix.');
+    }
+    if(state.N>=cap){
+      if(state.path==='grid') warns.push('At the 15 MW connection ceiling (~'+cap.toLocaleString()+' GPUs of this class at peak load). Growing further needs more power.');
+      else if(state.path==='colo') warns.push('At the assumed 2 MW colocation ceiling — no Lagos operator publicly offers more GPU-ready capacity today.');
+      else warns.push('At the modelled 20 MW first phase — scaling further is a design choice, not a constraint.');
+    }
+    if(state.rate>g.rate.odMedian){
+      flags.push('Rate above the global on-demand median ($'+g.rate.odMedian.toFixed(2)+') — defensible only as a data-residency / latency premium; expect compression as local supply lands.');
+    }
+    if(state.rate>g.contractedTop){
+      flags.push('Rate above the contracted band ('+g.band+') — the take-or-pay payback framing no longer applies; treat as merchant revenue exposed to 15–30%/yr erosion.');
+    }
+    if(state.util>0.75){
+      flags.push('Utilisation above 75% assumes contracted take-or-pay anchor tenants.');
+    }
+    if(state.rate>g.contractedTop && state.util>0.75){
+      flags.push('Above-contracted-band rate combined with anchor-level utilisation is internally inconsistent — anchors clear '+g.band+'.');
+    }
+    if(r.ebitda>0 && r.margin>0.65){
+      flags.push('EBITDA margin above CoreWeave’s reported ~60% — justified only by lower Nigerian staff cost and thin SG&A; treat the upper end as upside.');
+    }
+    if(r.ebitda>0 && r.payback<2.5){
+      flags.push('Payback under 2.5 years — faster than the best-financed operators claim; investors will discount this corner.');
+    }
+    if(r.ebitda>0 && r.payback>3 && r.payback<=g.life){
+      flags.push('Payback longer than typical 3-year anchor tenors — the tail assumes re-contracting at then-current (likely lower) rates.');
+    }
+    if(r.ebitda>0 && r.net>=0 && r.payback>g.life){
+      flags.push('Full-capex payback runs to or past the 5-year GPU life — it relies on facility life and resale value; expect investor scrutiny here.');
+    }
+    if(r.ebitda>0 && r.net>0 && r.yieldNet<0.10){
+      flags.push('Unlevered after-refresh yield sits below the ~10–12% Nigerian USD debt band — the equity case needs anchor contracts at 75%+ utilisation, concessional DFI financing, or the services layer running on this same capital.');
+    }
+    if(r.revenue>100e6){
+      flags.push('Revenue at this scale is a large share of Nigeria’s total addressable compute spend — assumes West-African regional demand, not Nigeria alone.');
+    }
+    w.textContent=warns.join(' ');
+    f.textContent=flags.join(' ');
 
-    // comparison table (same N, rate, util across all three)
+    // comparison table (same N, rate, util across all three; N clamped per path)
     var tb=document.querySelector('#cmp tbody'); tb.innerHTML='';
     ['colo','grid','own'].forEach(function(k){
-      var c=calc(k,state.gpu,Math.min(state.N,PATH[k].cap),state.rate,state.util);
-      var pay=(c.payback===Infinity||c.payback>40)?'—':c.payback.toFixed(1)+' yrs';
+      var kcap=capFor(k,state.gpu);
+      var capN=Math.min(state.N,kcap);
+      var c=calc(k,state.gpu,capN,state.rate,state.util);
       var prof=(c.ebitda>=0?'<span class="pos">':'<span class="neg">–')+fmtUSD(Math.abs(c.ebitda))+'</span>';
-      var capN=Math.min(state.N,PATH[k].cap);
+      var net=(c.net>=0?'<span class="pos">':'<span class="neg">–')+fmtUSD(Math.abs(c.net))+'</span>';
       var nlabel=(capN<state.N)?(' <span style="color:var(--grey);font-weight:400">('+capN.toLocaleString()+' max)</span>'):'';
       tb.insertAdjacentHTML('beforeend',
-        '<tr><td>'+PATH[k].label+nlabel+'</td><td>'+fmtBn(c.capex)+'</td><td>'+prof+'</td><td>'+(c.margin*100).toFixed(0)+'%</td><td>'+pay+'</td></tr>');
+        '<tr><td>'+PATH[k].label+nlabel+'</td><td>'+fmtBn(c.capex)+'</td><td>'+prof+'</td><td>'+net+'</td><td>'+(c.margin*100).toFixed(0)+'%</td><td>'+payStr(c.payback)+'</td></tr>');
     });
   }
 
+  function setRateSlider(gpuKey){
+    var rr=GPU[gpuKey].rate;
+    var s=document.getElementById('sRate');
+    s.min=rr.min; s.max=rr.max; s.step=rr.step; s.value=rr.def;
+    state.rate=rr.def;
+  }
+
   // events
-  document.querySelectorAll('.tab').forEach(function(t){
+  document.querySelectorAll('#page-infra .tab').forEach(function(t){
     t.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+      document.querySelectorAll('#page-infra .tab').forEach(function(x){x.classList.remove('active')});
       t.classList.add('active');
       state.path=t.dataset.path;
-      state.N=PATH[state.path].defN;
-      document.getElementById('sGpu').value=state.N;
+      state.N=Math.min(PATH[state.path].defN, capFor(state.path,state.gpu));
       render();
     });
   });
   document.querySelectorAll('#gpuToggle button').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('#gpuToggle button').forEach(function(x){x.classList.remove('on')});
-      b.classList.add('on'); state.gpu=b.dataset.gpu; render();
+      b.classList.add('on'); state.gpu=b.dataset.gpu;
+      setRateSlider(state.gpu);
+      render();
     });
   });
   document.getElementById('sGpu').addEventListener('input',function(){state.N=parseInt(this.value);render();});
@@ -520,18 +658,19 @@ function showPage(p){
 }
 (function(){
   var HW={
-    amd:   {chip:15000, cap:2.0e6, cpc:0.020, varClient:18000},
-    npu:   {chip:10000, cap:1.2e6, cpc:0.020, varClient:20000},
-    nvidia:{chip:40000, cap:3.0e6, cpc:0.040, varClient:26000}
+    l40s:{chip:12000, cap:2.5e5, cpc:0.020, varClient:20000},
+    amd: {chip:30000, cap:5.0e5, cpc:0.025, varClient:24000},
+    h200:{chip:46000, cap:7.0e5, cpc:0.035, varClient:28000}
   };
-  var hw='amd', mode='subs';
-  var st={chips:32, clients:12, contract:120000, vol:1000000, price:0.30};
-  function fmtUSD(v){var a=Math.abs(v);if(a>=1e9)return '$'+(v/1e9).toFixed(2)+'bn';if(a>=1e6)return '$'+(v/1e6).toFixed(2)+'M';if(a>=1e3)return '$'+Math.round(v/1e3)+'k';return '$'+Math.round(v);}
+  var hw='l40s', mode='subs';
+  var st={chips:8, clients:10, contract:120000, vol:750000, price:0.18};
+  function fmtUSD(v){var a=Math.abs(v);if(a>=999.5e6)return '$'+(v/1e9).toFixed(2)+'bn';if(a>=999.5e3)return '$'+(v/1e6).toFixed(2)+'M';if(a>=1e3)return '$'+Math.round(v/1e3)+'k';return '$'+Math.round(v);}
   function fmtN(v){if(v>=1e6)return (v/1e6).toFixed(v>=1e7?0:1)+'M';if(v>=1e3)return Math.round(v/1e3)+'k';return ''+v;}
   function calc(){
     var h=HW[hw];
-    var capex=st.chips*h.chip;
-    var fixed=500000 + 6000*st.chips;   // team + facility, scales with platform
+    var fixed=500000 + 6000*st.chips;   // core team + facility, scales with platform
+    // team is the real investment: capital base = hardware + 18 months of fixed-cost runway
+    var capex=st.chips*h.chip + fixed*1.5;
     var rev, opex, be=null, capUsed=null;
     if(mode==='subs'){
       rev=st.clients*st.contract;
@@ -558,18 +697,19 @@ function showPage(p){
     document.getElementById('svcCapex').textContent=fmtUSD(r.capex);
     document.getElementById('svcEbitda').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda));
     document.getElementById('svcEbitdaCard').className='hcard '+(r.ebitda>=0?'profit':'loss');
-    document.getElementById('svcPay').textContent=(r.pay===Infinity||r.pay>40)?'—':(r.pay<1?(r.pay*12).toFixed(1)+' mo':r.pay.toFixed(1)+' yrs');
+    document.getElementById('svcPay').textContent=(r.pay===Infinity)?'no payback':(r.pay>15?'15+ yrs':(r.pay<1?(r.pay*12).toFixed(1)+' mo':r.pay.toFixed(1)+' yrs'));
     document.getElementById('svcRev').textContent=fmtUSD(r.rev)+'/yr';
     document.getElementById('svcOpex').textContent=fmtUSD(r.opex)+'/yr';
     document.getElementById('svcProfit').textContent=(r.ebitda>=0?'':'–')+fmtUSD(Math.abs(r.ebitda))+'/yr';
     document.getElementById('svcMargin').textContent='Margin '+(r.margin*100).toFixed(0)+'%';
     var base=Math.max(r.rev,r.opex,1);
-    document.getElementById('svcbRev').style.width='100%';
+    document.getElementById('svcbRev').style.width=(r.rev/base*100)+'%';
     document.getElementById('svcbOpex').style.width=Math.min(100,r.opex/base*100)+'%';
     var pf=document.getElementById('svcbProfit');
     pf.style.width=Math.max(0,Math.min(100,r.ebitda/base*100))+'%';
     pf.style.background=r.ebitda>=0?'var(--bar-profit)':'var(--red)';
     var warn=document.getElementById('svcWarn'); warn.textContent='';
+    var flag=document.getElementById('svcFlag'); var flags=[];
     var m=document.getElementById('svcMeter');
     if(mode==='subs'){
       var beN=r.be;
@@ -577,14 +717,23 @@ function showPage(p){
       m.style.width=pct+'%';
       m.style.background=(st.clients>=beN)?'var(--bar-profit)':'var(--bar-opex)';
       document.getElementById('svcBeText').textContent=(beN===Infinity)?'Contract below cost — raise price':(st.clients+' of ~'+beN+' clients to break even'+(st.clients>=beN?'  ✓ profitable':''));
-      if(r.ebitda<0) warn.textContent='Below break-even — sign more clients or raise contract value.';
+      if(beN!==Infinity && beN>40) warn.textContent='Break-even ('+beN+' clients) exceeds the entire Nigerian client universe (~40–45 institutions) at this contract value — raise price or cut hardware cost.';
+      else if(beN!==Infinity && beN>25) warn.textContent='Break-even ('+beN+' clients) exceeds the modelled 25-client ceiling at this contract value — raise price or cut variable cost.';
+      else if(r.ebitda<0) warn.textContent='Below break-even — sign more clients or raise contract value.';
+      if(st.clients>15) flags.push('15+ clients means displacing entrenched global vendors in most tier-1 banks — a 3–5 year stretch case, not a base case.');
     } else {
       var cu=r.capUsed;
       m.style.width=Math.min(100,cu*100)+'%';
       m.style.background=cu>1?'var(--red)':(cu>0.9?'var(--bar-opex)':'var(--bar-profit)');
       document.getElementById('svcBeText').textContent=(cu*100).toFixed(cu<0.1?1:0)+'% of chip capacity used';
       if(cu>1) warn.textContent='Volume exceeds capacity — add accelerators to serve it.';
+      if(st.vol>1000000) flags.push('12M+ checks/yr approaches a meaningful share of incumbent-leader volumes — assumes major bank partnerships in place.');
+      if(st.price>0.35) flags.push('Price above the document-verification range ($0.10–0.35) — defensible only for biometric-heavy check mixes.');
+      if(r.ebitda<0 && cu<=1) warn.textContent='Below break-even at this volume and price — the fixed team cost dominates.';
     }
+    if(r.ebitda>0 && r.margin>0.80) flags.push('Margin above 80% assumes zero pricing pressure — above what enterprise-software vendors sustain; treat as upside.');
+    if(r.ebitda>0 && r.pay<1) flags.push('Payback under a year is faster than an enterprise bank sales cycle (9–18 months) — real cash-flow timing will be slower.');
+    flag.textContent=flags.join(' ');
     ['sChips','sClients','sContract','sVol','sPrice'].forEach(function(id){var s=document.getElementById(id);if(!s)return;var p=(s.value-s.min)/(s.max-s.min)*100;s.style.background='linear-gradient(90deg,var(--teal) '+p+'%,#fff '+p+'%)';});
   }
   function setMode(mm){

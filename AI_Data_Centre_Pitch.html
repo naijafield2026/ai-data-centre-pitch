@@ -429,6 +429,16 @@
               <button data-hw="h200">NVIDIA H200</button>
             </div>
           </div>
+
+          <div class="ctl">
+            <label>Scenario</label>
+            <div class="toggle" id="svcScen">
+              <button data-scen="stress">Stress</button>
+              <button data-scen="base" class="on">Base case</button>
+              <button data-scen="upside">Upside</button>
+            </div>
+            <div class="rnote">stress = just past break-even · upside = strong client wins (flags will say so) · drag any slider to go custom</div>
+          </div>
           <div class="ctl"><div class="row"><label>Accelerators (chips)</label><span class="val" id="vChips">8</span></div><input type="range" id="sChips" min="8" max="128" step="8" value="8"></div>
           <div class="ctl mode-subs"><div class="row"><label>Enterprise clients</label><span class="val" id="vClients">10</span></div><input type="range" id="sClients" min="1" max="25" step="1" value="10">
             <div class="rnote">universe: ~26 banks + 4 telcos + 10–15 scaled fintechs · 5–12 is a credible 3-yr base case</div></div>
@@ -461,6 +471,62 @@
       </div>
     </div>
     <div class="disc" style="margin-top:22px"><strong>Same chips, two models.</strong> This managed-services business can run on the very same hardware as the infrastructure plan — rent the compute out, or sell finished outcomes on it. Switch to the <strong>Infrastructure</strong> page to compare the compute-rental economics.</div>
+  </div></section>
+
+  <!-- SERVICES ASK -->
+  <section><div class="wrap">
+    <div class="eyebrow">The ask — services track</div>
+    <h2>A small cheque that stands on its own</h2>
+    <p class="lead">This track needs no data centre and no infrastructure-scale capital: the chips are hosted in existing facilities, and the team is the real investment. It is sized for a partner who wants exposure to Nigerian enterprise AI at software-company numbers — total capital to break-even is <b>$918k</b>, staged so the second tranche only follows evidence from the first.</p>
+
+    <div class="paths" style="grid-template-columns:1fr 1fr">
+      <div class="path"><div class="bar" style="background:var(--teal)"></div>
+        <h3>What we bring</h3><div class="cap">In place today</div>
+        <ul>
+          <li>A product plan priced against real incumbents: fraud scoring at $60–200k/yr vs the $150–500k global-vendor tier; doc &amp; biometric AI at $0.08–0.35/check</li>
+          <li>A cost structure known to the dollar — the calculator above is the budget: 8 inference GPUs ($96k) carry ~6× the base-case volume</li>
+          <li>The regulator-made tailwind: every CBN-regulated institution must localise payment data by Jan 2027</li>
+          <li>A defined, honest market: ~26 banks + 4 telcos + 10–15 scaled fintechs — we need 6–7 of ~45 to break even</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div>
+        <h3>What we need</h3><div class="cap">Capital — and doors</div>
+        <ul>
+          <li>Staged capital per the tranches below — $450k now, $468k at evidence, $918k total</li>
+          <li><b>Warm introductions</b> to bank and fintech decision-makers — in this market an intro is worth as much as a cheque, and a partner who opens two doors accelerates break-even by quarters</li>
+          <li>Optionally: a paid pilot commitment from the partner's own network — the strongest possible Stage-1 evidence</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="paths">
+      <div class="path"><div class="bar" style="background:var(--teal)"></div>
+        <h3>Stage 1 — Prove</h3><div class="cap">~$450k · first ~8 months</div>
+        <div class="num">Live in ~one quarter — no build, hosted chips</div>
+        <ul><li>8 inference GPUs deployed ($96k) + lean core team (~$350k runway)</li><li>Two products shipped: fraud scoring + document AI</li><li>2–3 paid pilots signed; pricing validated against incumbents</li></ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div>
+        <h3>Stage 2 — Break even</h3><div class="cap">+$468k (total $918k) · months 9–18</div>
+        <div class="num">Unlocked by paid pilots converting</div>
+        <ul><li>Full 18-month runway to 6–7 signed clients — fixed costs covered</li><li>Every client after lands at ~80% incremental margin</li><li>At the base case (10 × $120k) the whole investment pays back in ~2 years</li></ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--green)"></div>
+        <h3>Stage 3 — Compound</h3><div class="cap">Funded by cash flow · year 2+</div>
+        <div class="num">No further cheque required</div>
+        <ul><li>10–15 clients ≈ $1.2–2.3M revenue, EBITDA margin climbing from ~40% toward 60%+ as clients stack</li><li>Capacity is never the constraint — chips add at $12k each as volume demands</li><li>Optional growth top-up only if the market pulls harder than planned</li></ul>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Use of funds</th><th>Amount</th><th>What it buys</th></tr></thead>
+      <tbody>
+        <tr><td>Inference hardware</td><td>$96k</td><td>8× L40S-class GPUs, colo-hosted — ~6× base-case volume headroom</td></tr>
+        <tr><td>Team &amp; facility (18 months)</td><td>$822k</td><td>Core engineering, model ops, bank integration &amp; support — $548k/yr, the calculator's fixed-cost line</td></tr>
+        <tr><td><b>Total to break-even</b></td><td><b>$918k</b></td><td>6–7 clients covers it; base case pays back in ~2 years</td></tr>
+      </tbody>
+    </table>
+
+    <div class="disc" style="margin-top:22px"><strong>This ask stands alone.</strong> It does not depend on the infrastructure raise on the other page — the chips rent space in existing facilities. But if the data centre is built, this business becomes its first anchor tenant, and the two sides of this brief compound each other.</div>
   </div></section>
 
 </div><!-- /page-services -->
@@ -753,6 +819,11 @@ function showPage(p){
   };
   var hw='l40s', mode='subs';
   var st={chips:8, clients:10, contract:120000, vol:750000, price:0.18};
+  var SCEN={
+    subs:{stress:{clients:8, contract:90000}, base:{clients:10, contract:120000}, upside:{clients:15, contract:150000}},
+    kyc: {stress:{vol:500000, price:0.12},   base:{vol:750000, price:0.18},       upside:{vol:1500000, price:0.25}}
+  };
+  var svcScenario='base';
   function fmtUSD(v){var a=Math.abs(v);if(a>=999.5e6)return '$'+(v/1e9).toFixed(2)+'bn';if(a>=999.5e3)return '$'+(v/1e6).toFixed(2)+'M';if(a>=1e3)return '$'+Math.round(v/1e3)+'k';return '$'+Math.round(v);}
   function fmtN(v){if(v>=1e6)return (v/1e6).toFixed(v>=1e7?0:1)+'M';if(v>=1e3)return Math.round(v/1e3)+'k';return ''+v;}
   function calc(){
@@ -825,18 +896,44 @@ function showPage(p){
     flag.textContent=flags.join(' ');
     ['sChips','sClients','sContract','sVol','sPrice'].forEach(function(id){var s=document.getElementById(id);if(!s)return;var p=(s.value-s.min)/(s.max-s.min)*100;s.style.background='linear-gradient(90deg,var(--teal) '+p+'%,#fff '+p+'%)';});
   }
+  function updateSvcScenBtns(){
+    document.querySelectorAll('#svcScen button').forEach(function(b){
+      b.classList.toggle('on', b.dataset.scen===svcScenario);
+    });
+  }
+  function applySvcScenario(s){
+    svcScenario=s;
+    var p=SCEN[mode][s];
+    if(mode==='subs'){
+      st.clients=p.clients; st.contract=p.contract;
+      document.getElementById('sClients').value=p.clients;
+      document.getElementById('sContract').value=p.contract;
+    } else {
+      st.vol=p.vol; st.price=p.price;
+      document.getElementById('sVol').value=p.vol;
+      document.getElementById('sPrice').value=p.price;
+    }
+    updateSvcScenBtns();
+    render();
+  }
+  function svcGoCustom(){
+    if(svcScenario!=='custom'){ svcScenario='custom'; updateSvcScenBtns(); }
+  }
   function setMode(mm){
     mode=mm;
     document.querySelectorAll('#svcTabs .tab').forEach(function(t){t.classList.toggle('active', t.dataset.mode===mm);});
     document.querySelectorAll('.mode-subs').forEach(function(e){e.style.display=(mm==='subs')?'':'none';});
     document.querySelectorAll('.mode-kyc').forEach(function(e){e.style.display=(mm==='kyc')?'':'none';});
-    render();
+    if(svcScenario!=='custom'){ applySvcScenario(svcScenario); } else { render(); }
   }
-  document.getElementById('sChips').addEventListener('input',function(){st.chips=parseInt(this.value);render();});
-  document.getElementById('sClients').addEventListener('input',function(){st.clients=parseInt(this.value);render();});
-  document.getElementById('sContract').addEventListener('input',function(){st.contract=parseInt(this.value);render();});
-  document.getElementById('sVol').addEventListener('input',function(){st.vol=parseInt(this.value);render();});
-  document.getElementById('sPrice').addEventListener('input',function(){st.price=parseFloat(this.value);render();});
+  document.querySelectorAll('#svcScen button').forEach(function(b){
+    b.addEventListener('click',function(){ applySvcScenario(b.dataset.scen); });
+  });
+  document.getElementById('sChips').addEventListener('input',function(){st.chips=parseInt(this.value);svcGoCustom();render();});
+  document.getElementById('sClients').addEventListener('input',function(){st.clients=parseInt(this.value);svcGoCustom();render();});
+  document.getElementById('sContract').addEventListener('input',function(){st.contract=parseInt(this.value);svcGoCustom();render();});
+  document.getElementById('sVol').addEventListener('input',function(){st.vol=parseInt(this.value);svcGoCustom();render();});
+  document.getElementById('sPrice').addEventListener('input',function(){st.price=parseFloat(this.value);svcGoCustom();render();});
   document.querySelectorAll('#svcHw button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#svcHw button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');hw=b.dataset.hw;render();});});
   document.querySelectorAll('#svcTabs .tab').forEach(function(t){t.addEventListener('click',function(){setMode(t.dataset.mode);});});
   setMode('subs');

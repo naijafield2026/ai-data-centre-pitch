@@ -138,6 +138,7 @@
   <span class="brand">AI Ventures · Nigeria</span>
   <button id="navInfra" class="on" onclick="showPage('infra')">Infrastructure — sell compute</button>
   <button id="navSvc" onclick="showPage('services')">Managed Services — sell outcomes</button>
+  <button id="navUse" onclick="showPage('usecases')">Use cases — who buys &amp; why</button>
 </div>
 
 <div id="page-infra">
@@ -531,6 +532,102 @@
 
 </div><!-- /page-services -->
 
+<div id="page-usecases" style="display:none">
+
+  <!-- USE CASES HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Demand Map · Nigeria · July 2026</div>
+      <h1>Who Buys This — and What the AI Must Do</h1>
+      <p>The concrete workloads Nigeria's largest enterprises need run in-country — mapped to the model capabilities and the hardware on the other two pages. Illustrative demand map, not statements of engagement.</p>
+    </div>
+  </div>
+
+  <section><div class="wrap">
+    <div class="eyebrow">By sector</div>
+    <h2>The workloads, sector by sector</h2>
+    <p class="lead">Each card: who the buyer class is, what they need AI for, and what the models must actually do. Names are examples of the institution class, not claimed customers.</p>
+
+    <div class="paths">
+      <div class="path"><div class="bar" style="background:var(--teal)"></div>
+        <h3>Banks</h3><div class="cap">GTCO, Access, Zenith, UBA-class · ~26 institutions</div>
+        <ul>
+          <li><b>Real-time fraud &amp; transaction risk scoring</b> — every transfer scored in &lt;100ms; NIBSS logged ₦25.9bn in payment fraud in 2025</li>
+          <li><b>AML &amp; sanctions screening</b> — name-matching across millions of accounts, batch + real-time</li>
+          <li><b>Credit scoring for thin-file lending</b> — models trained on transaction history where credit bureaus are thin</li>
+          <li><b>Document AI for onboarding</b> — ID documents, utility bills, signatures read and verified automatically</li>
+          <li>Model needs: low-latency inference, in-country data (CBN Jan 2027), fine-tuning on the bank's own transaction data</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div>
+        <h3>Telcos</h3><div class="cap">MTN, Airtel, Glo, 9mobile-class</div>
+        <ul>
+          <li><b>SIM-swap &amp; mobile-money fraud detection</b> — the biggest fraud vector into bank accounts; real-time scoring on MoMo/airtime rails</li>
+          <li><b>Customer-service AI in Nigerian languages</b> — call-centre copilots and chatbots in Pidgin, Yoruba, Hausa, Igbo; speech-to-text tuned to local accents</li>
+          <li><b>Churn prediction &amp; next-best-offer</b> — batch scoring across 70M+ subscriber bases</li>
+          <li><b>Network anomaly detection</b> — predicting cell-site failures and load spikes</li>
+          <li>Model needs: local-language NLP + speech models, huge batch inference, subscriber-data residency</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--green)"></div>
+        <h3>Fintechs &amp; payments</h3><div class="cap">Flutterwave, OPay, Moniepoint, Paystack-class</div>
+        <ul>
+          <li><b>Payment fraud scoring at transaction time</b> — latency-critical: a decision in the payment flow, exactly the workload that can't ride a 150ms round-trip to Europe</li>
+          <li><b>KYC onboarding at scale</b> — document + biometric liveness checks, millions per month</li>
+          <li><b>Chargeback &amp; dispute automation</b> — document AI reading evidence bundles</li>
+          <li>Model needs: real-time inference close to the rails, CBN-compliant data handling, per-check pricing</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--teal)"></div>
+        <h3>Oil, gas &amp; energy</h3><div class="cap">NNPC, Seplat, Dangote Refinery-class</div>
+        <ul>
+          <li><b>Predictive maintenance</b> — vibration/sensor models on pumps, turbines, refinery units; downtime costs millions per day</li>
+          <li><b>Pipeline &amp; facility surveillance</b> — computer vision on drone and CCTV feeds for tampering, theft and leaks</li>
+          <li><b>Seismic &amp; subsurface analysis</b> — genuinely GPU-heavy training workloads, today sent abroad</li>
+          <li>Model needs: computer vision at the edge + heavy training capacity — the sector most likely to rent training-class GPUs outright</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--amber)"></div>
+        <h3>Government &amp; public sector</h3><div class="cap">NIMC, FIRS, Customs, NIBSS-class</div>
+        <ul>
+          <li><b>Identity at national scale</b> — biometric deduplication and verification across 100M+ NIN/BVN records; sovereign data that legally cannot leave</li>
+          <li><b>Tax &amp; customs analytics</b> — fraud patterns in filings, automated document processing at ports</li>
+          <li><b>Citizen-service assistants</b> — multilingual government chat and voice services</li>
+          <li>Model needs: hard in-country hosting (sovereign/CNII rules), biometric models, batch scale</li>
+        </ul>
+      </div>
+      <div class="path"><div class="bar" style="background:var(--green)"></div>
+        <h3>Retail, logistics &amp; consumer</h3><div class="cap">Dangote, BUA, Jumia, Shoprite-class</div>
+        <ul>
+          <li><b>Demand forecasting &amp; pricing</b> — SKU-level forecasts in a volatile-FX economy where mispricing burns margin fast</li>
+          <li><b>Logistics routing</b> — fleet optimisation across hard road networks</li>
+          <li><b>Retail loss prevention</b> — computer vision in warehouses and stores</li>
+          <li>Model needs: batch forecasting, vision, cheap per-inference cost — classic inference-class silicon work</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="eyebrow">The requirements, rolled up</div>
+    <h2>What the models must do — and what runs it</h2>
+    <table>
+      <thead><tr><th>Capability required</th><th>Why it matters here</th><th>Who needs it</th><th>Runs on</th></tr></thead>
+      <tbody>
+        <tr><td>Real-time inference (&lt;100ms)</td><td>Fraud/payment decisions inside the transaction flow — can't tolerate the ~100–150ms round-trip to European clouds</td><td>Banks, fintechs, telcos</td><td>Inference GPUs, in-country</td></tr>
+        <tr><td>In-country data processing</td><td>CBN payment-data mandate (Jan 2027), sovereign/CNII rules for government identity data</td><td>All regulated buyers</td><td>Any local capacity — the moat</td></tr>
+        <tr><td>Nigerian-language NLP &amp; speech</td><td>Pidgin, Yoruba, Hausa, Igbo customer bases global models serve poorly; Awarri's govt-backed LLM proves the direction</td><td>Telcos, banks, government</td><td>Fine-tuned models → training GPUs to build, inference GPUs to run</td></tr>
+        <tr><td>Fine-tuning on private data</td><td>Fraud and credit models only work trained on the institution's own transactions — data that must stay in-country</td><td>Banks, fintechs</td><td>Training-class GPUs (H200 tier)</td></tr>
+        <tr><td>Computer vision at scale</td><td>Pipeline surveillance, biometric liveness, warehouse monitoring</td><td>Oil &amp; gas, government, retail</td><td>Inference GPUs</td></tr>
+        <tr><td>Massive batch scoring</td><td>Churn, AML screening, demand forecasts across tens of millions of records</td><td>Telcos, banks, retail</td><td>Inference GPUs, off-peak capacity</td></tr>
+        <tr><td>Heavy model training</td><td>Seismic analysis, local-language foundation models, national-scale biometrics</td><td>Oil &amp; gas, government, research</td><td>The training cluster — the Infrastructure page</td></tr>
+      </tbody>
+    </table>
+    <div class="disc" style="margin-top:22px"><strong>How this maps to the rest of the brief.</strong> The latency-critical and regulated workloads above are the anchor-tenant demand for the <b>Infrastructure</b> page; the fraud, KYC and document workloads are exactly what the <b>Managed Services</b> page sells as finished products. Same demand, two ways to monetise it.</div>
+  </div></section>
+
+</div><!-- /page-usecases -->
+
 <!-- ASSUMPTIONS -->
 <section class="assume">
   <div class="wrap">
@@ -805,10 +902,12 @@
 </script>
 <script>
 function showPage(p){
-  document.getElementById('page-infra').style.display   = (p==='infra')   ? '' : 'none';
+  document.getElementById('page-infra').style.display    = (p==='infra')   ? '' : 'none';
   document.getElementById('page-services').style.display = (p==='services')? '' : 'none';
+  document.getElementById('page-usecases').style.display = (p==='usecases')? '' : 'none';
   document.getElementById('navInfra').classList.toggle('on', p==='infra');
   document.getElementById('navSvc').classList.toggle('on', p==='services');
+  document.getElementById('navUse').classList.toggle('on', p==='usecases');
   window.scrollTo(0,0);
 }
 (function(){

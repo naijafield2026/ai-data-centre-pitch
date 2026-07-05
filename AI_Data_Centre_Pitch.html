@@ -218,6 +218,16 @@
           </div>
 
           <div class="ctl">
+            <label>Scenario</label>
+            <div class="toggle" id="scenToggle">
+              <button data-scen="stress">Stress</button>
+              <button data-scen="base" class="on">Base case</button>
+              <button data-scen="upside">Upside</button>
+            </div>
+            <div class="rnote">stress = bottom of the contracted band at merchant-only utilisation · upside = premium rate with anchor-level utilisation (the flags will say so) · drag any slider to go custom</div>
+          </div>
+
+          <div class="ctl">
             <div class="row"><label>Number of GPUs</label><span class="val" id="vGpu">4,000</span></div>
             <input type="range" id="sGpu" min="50" max="8050" step="50" value="4000">
           </div>
@@ -502,10 +512,12 @@
   var GPU={
     training:{compute:46000, kw:1.15, kwPeak:1.28, life:5, residual:0.15, contractedTop:3.5, band:'$2.10–3.50 for H200-class',
       rate:{min:2.0, max:4.5, step:0.1, def:3.2, odMedian:3.9,
-        note:'contracted 1–3yr: $2.10–3.50 · on-demand median ~$3.90 (GetDeploying, Jul 2026)'}},
+        note:'contracted 1–3yr: $2.10–3.50 · on-demand median ~$3.90 (GetDeploying, Jul 2026)'},
+      presets:{stress:{rate:2.6, util:0.60}, base:{rate:3.2, util:0.65}, upside:{rate:3.8, util:0.75}}},
     inference:{compute:12000, kw:0.53, kwPeak:0.60, life:5, residual:0.15, contractedTop:1.19, band:'at or below the ~$1.19 median for L40S-class',
       rate:{min:0.7, max:1.6, step:0.05, def:1.15, odMedian:1.19,
-        note:'market median ~$1.19 · credible providers $0.70–1.60; spot dips lower but is uneconomic here (GetDeploying, Jul 2026)'}}
+        note:'market median ~$1.19 · credible providers $0.70–1.60; spot dips lower but is uneconomic here (GetDeploying, Jul 2026)'},
+      presets:{stress:{rate:0.95, util:0.60}, base:{rate:1.15, util:0.65}, upside:{rate:1.40, util:0.75}}}
   };
   var PATH={
     colo:{label:'Rent racks (colocation)', kwCapex:1700, tariff:0.18, ops:{training:5500,inference:2400}, pue:1.6, mwCap:2, defN:200,
@@ -666,11 +678,28 @@
     });
   }
 
-  function setRateSlider(gpuKey){
+  function setRateRange(gpuKey){
     var rr=GPU[gpuKey].rate;
     var s=document.getElementById('sRate');
-    s.min=rr.min; s.max=rr.max; s.step=rr.step; s.value=rr.def;
-    state.rate=rr.def;
+    s.min=rr.min; s.max=rr.max; s.step=rr.step;
+  }
+  var scenario='base';
+  function updateScenBtns(){
+    document.querySelectorAll('#scenToggle button').forEach(function(b){
+      b.classList.toggle('on', b.dataset.scen===scenario);
+    });
+  }
+  function applyScenario(s){
+    scenario=s;
+    var p=GPU[state.gpu].presets[s];
+    state.rate=p.rate; state.util=p.util;
+    document.getElementById('sRate').value=p.rate;
+    document.getElementById('sUtil').value=Math.round(p.util*100);
+    updateScenBtns();
+    render();
+  }
+  function goCustom(){
+    if(scenario!=='custom'){ scenario='custom'; updateScenBtns(); }
   }
 
   // events
@@ -687,13 +716,23 @@
     b.addEventListener('click',function(){
       document.querySelectorAll('#gpuToggle button').forEach(function(x){x.classList.remove('on')});
       b.classList.add('on'); state.gpu=b.dataset.gpu;
-      setRateSlider(state.gpu);
-      render();
+      setRateRange(state.gpu);
+      if(scenario==='custom'){
+        var rr=GPU[state.gpu].rate;
+        state.rate=rr.def;
+        document.getElementById('sRate').value=rr.def;
+        render();
+      } else {
+        applyScenario(scenario);
+      }
     });
   });
+  document.querySelectorAll('#scenToggle button').forEach(function(b){
+    b.addEventListener('click',function(){ applyScenario(b.dataset.scen); });
+  });
   document.getElementById('sGpu').addEventListener('input',function(){state.N=parseInt(this.value);render();});
-  document.getElementById('sRate').addEventListener('input',function(){state.rate=parseFloat(this.value);render();});
-  document.getElementById('sUtil').addEventListener('input',function(){state.util=parseInt(this.value)/100;render();});
+  document.getElementById('sRate').addEventListener('input',function(){state.rate=parseFloat(this.value);goCustom();render();});
+  document.getElementById('sUtil').addEventListener('input',function(){state.util=parseInt(this.value)/100;goCustom();render();});
 
   render();
 })();
